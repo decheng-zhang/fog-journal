@@ -1406,7 +1406,7 @@ Noticeably, even if we run 11 single-objective optimizations. We cannot expect t
 In this section, a detailed example is presented to explain the FPP planning results. The first instance of FPP3010 is solved with the weighted sum method, NSGA-II, SMPSO and PSONSGA algorithms. The FPP3010 assumes that one needs to plan and design a brand new fog network to accommodate 30 edge-clusters. To achieve this, we need to find the optimal number, location and capacity of fog nodes. \Fig{nettopology} shows the initial planning area with 30 edge-clusters and 10 potential locations that are uniformly distributed in a $100km \times 100km$ area. 
 Each edge-cluster has resource demands which need to be accommodated. 
 \begin{figure}[H]
-\centerline{\includegraphics[trim=0 30 0 50,clip,width=3.5in]{100x100problem.png}}
+\centerline{\includegraphics[trim=0 50 0 50,clip,width=3.8in]{100x100problem.png}}
 \caption{Edge-cluster locations and potential locations of fog for FPP3010 (instance-1)} 
 \label{nettopology}
 \end{figure}
@@ -1487,7 +1487,7 @@ One fundamental difference between single and multiple objective optimization is
         % first figure itself
      %   \captionsetup{font={scriptsize,}}
         \subfloat[Planning result of weighted sum (CPLEX), cost: \$1,004,900 delay: 322.1ms]
-        {\includegraphics[trim=40 20 20 30,clip,width=.5\linewidth]{100x100problem_CPLEX2.png}\label{CPLEXrouting}}
+        {\includegraphics[trim=40 20 20 30,clip,width=.5\linewidth]{100x100problem_cplex2.png}\label{CPLEXrouting}}
     \hfil
         % second figure itself
        %  \captionsetup{font={scriptsize,}}
