@@ -44,43 +44,99 @@ S.~Yi, C.~Li, and Q.~Li, ``A survey of fog computing: concepts, applications
 M.~Chiang and T.~Zhang, ``Fog and iot: An overview of research opportunities,''
   \emph{IEEE Internet of Things Journal}, vol.~3, no.~6, pp. 854--864, 2016.
 
-\bibitem{Deb:2002:FEM:2221359.2221582}
+\bibitem{mouradian2017comprehensive}
+C.~Mouradian, D.~Naboulsi, S.~Yangui, R.~H. Glitho, M.~J. Morrow, and P.~A.
+  Polakos, ``A comprehensive survey on fog computing: State-of-the-art and
+  research challenges,'' \emph{IEEE Communications Surveys \& Tutorials}, 2017.
+
+\bibitem{7833029}
+C.~Feng, H.~Xu, and B.~Li, ``An alternating direction method approach to cloud
+  traffic management,'' \emph{IEEE Transactions on Parallel and Distributed
+  Systems}, vol.~28, no.~8, pp. 2145--2158, Aug. 2017.
+
+\bibitem{6678113}
+A.~Ghosh, S.~Ha, E.~Crabbe, and J.~Rexford, ``Scalable multi-class traffic
+  management in data center backbone networks,'' \emph{IEEE Journal on Selected
+  Areas in Communications}, vol.~31, no.~12, pp. 2673--2684, December 2013.
+
+\bibitem{Vazirani:2001:AA:500776}
+V.~V. Vazirani, \emph{Approximation Algorithms}.\hskip 1em plus 0.5em minus
+  0.4em\relax New York, NY, USA: Springer-Verlag New York, Inc., 2001.
+
+\bibitem{1984}
+N.~Megiddo and K.~J. Supowit, ``\BIBforeignlanguage{English}{On the complexity
+  of some common geometric location problems},''
+  \emph{\BIBforeignlanguage{English}{SIAM Journal on Computing}}, vol.~13,
+  no.~1, pp. 182--196, 1984.
+
+\bibitem{FOWLER1981133}
 \BIBentryALTinterwordspacing
-K.~Deb, A.~Pratap, S.~Agarwal, and T.~Meyarivan, ``A fast and elitist
-  multiobjective genetic algorithm: Nsga-ii,'' \emph{Trans. Evol. Comp},
-  vol.~6, no.~2, pp. 182--197, Apr. 2002. [Online]. Available:
-  \url{http://dx.doi.org/10.1109/4235.996017}
+R.~J. Fowler, M.~S. Paterson, and S.~L. Tanimoto, ``Optimal packing and
+  covering in the plane are np-complete,'' \emph{Information Processing
+  Letters}, vol.~12, no.~3, pp. 133 -- 137, 1981. [Online]. Available:
+  \url{http://www.sciencedirect.com/science/article/pii/0020019081901113}
+\BIBentrySTDinterwordspacing
+
+\bibitem{bonn}
+J.~Vygen, ``Approximation algorithms for facility location problem,'' Research
+  Institute for Discrete Mathematic, University of Bonn, Tech. Rep., 2004.
+
+\bibitem{poli2017}
+\BIBentryALTinterwordspacing
+R.~Poli, J.~Kennedy, and T.~Blackwell, ``Particle swarm optimization,''
+  \emph{Swarm Intelligence}, vol.~1, no.~1, pp. 33--57, Jun. 2007. [Online].
+  Available: \url{https://doi.org/10.1007/s11721-007-0002-0}
 \BIBentrySTDinterwordspacing
 
 \bibitem{smpso}
-A.~Nebro, J.~Durillo, J.~Garc铆a-Nieto, C.~Coello~Coello, F.~Luna, and
+A.~Nebro, J.~Durillo, J.~Garc???a-Nieto, C.~Coello~Coello, F.~Luna, and
   E.~Alba, ``Smpso: A new pso-based metaheuristic for multi-objective
   optimization,'' in \emph{2009 IEEE Symposium on Computational Intelligence in
   Multi-Criteria Decision-Making, MCDM 2009 - Proceedings}, May. 2009, pp. 66
   -- 73.
 
-\bibitem{Deb:2001:MOU:559152}
-K.~Deb and D.~Kalyanmoy, \emph{Multi-Objective Optimization Using Evolutionary
-  Algorithms}, ser. Wiley Interscience Series in S.\hskip 1em plus 0.5em minus
-  0.4em\relax New York, NY, USA: John Wiley; Sons, Inc., 2001.
-
-\bibitem{ITOR:ITOR12294}
+\bibitem{doi:10.1163/156939308784160703}
 \BIBentryALTinterwordspacing
-S.~Iturriaga, B.~Dorronsoro, and S.~Nesmachnow, ``Multiobjective evolutionary
-  algorithms for energy and service level scheduling in a federation of
-  distributed datacenters,'' \emph{International Transactions in Operational
-  Research}, vol.~24, no. 1-2, pp. 199--228, 2017. [Online]. Available:
-  \url{http://dx.doi.org/10.1111/itor.12294}
+J.~OuYang, F.~Yang, S.~W. Yang, and Z.~P. Nie, ``The improved nsga-ii
+  approach,'' \emph{Journal of Electromagnetic Waves and Applications},
+  vol.~22, no. 2-3, pp. 163--172, 2008. [Online]. Available:
+  \url{http://dx.doi.org/10.1163/156939308784160703}
 \BIBentrySTDinterwordspacing
 
-\bibitem{HARRIS20141}
+\bibitem{magnier2008multiobjective}
+L.~Magnier, ``Multiobjective optimization of building design using artificial
+  neural network and multiobjective evolutionary algorithms,'' Ph.D.
+  dissertation, Concordia University, 2008.
+
+\bibitem{onut2008two}
+S.~{\"O}n{\"u}t, B.~G{\"u}ls{\"u}n, U.~R. Tuzkaya, G.~Tuzkaya \emph{et~al.},
+  ``A two-phase possibilistic linear programming methodology for
+  multi-objective supplier evaluation and order allocation problems,''
+  \emph{Information Sciences}, vol. 178, no.~2, pp. 485--500, 2008.
+
+\bibitem{sabri2000multi}
+E.~H. Sabri and B.~M. Beamon, ``A multi-objective approach to simultaneous
+  strategic and operational planning in supply chain design,'' \emph{Omega},
+  vol.~28, no.~5, pp. 581--598, 2000.
+
+\bibitem{concordia}
+L.~Magnier and F.~Haghighat, ``Multiobjective optimization of building design
+  using trnsys simulations, genetic algorithm, and artificial neural network,''
+  vol.~45, pp. 739--746, 03 2010.
+
+\bibitem{nygren2010akamai}
+E.~Nygren, R.~K. Sitaraman, and J.~Sun, ``The akamai network: a platform for
+  high-performance internet applications,'' \emph{ACM SIGOPS Operating Systems
+  Review}, vol.~44, no.~3, pp. 2--19, 2010.
+
+\bibitem{Auger:2009:THI:1527125.1527138}
 \BIBentryALTinterwordspacing
-I.~Harris, C.~L. Mumford, and M.~M. Naim, ``A hybrid multi-objective approach
-  to capacitated facility location with flexible store allocation for green
-  logistics modeling,'' \emph{Transportation Research Part E: Logistics and
-  Transportation Review}, vol.~66, no. Supplement C, pp. 1 -- 22, 2014.
-  [Online]. Available:
-  \url{http://www.sciencedirect.com/science/article/pii/S1366554514000179}
+A.~Auger, J.~Bader, D.~Brockhoff, and E.~Zitzler, ``Theory of the hypervolume
+  indicator: Optimal distributions and the choice of the reference point,'' in
+  \emph{Proceedings of the Tenth ACM SIGEVO Workshop on Foundations of Genetic
+  Algorithms}, ser. FOGA '09.\hskip 1em plus 0.5em minus 0.4em\relax New York,
+  NY, USA: ACM, 2009, pp. 87--102. [Online]. Available:
+  \url{http://doi.acm.org/10.1145/1527125.1527138}
 \BIBentrySTDinterwordspacing
 
 \bibitem{fcsmartcity}
@@ -131,92 +187,18 @@ A.~Khosravi and R.~Buyya, ``Energy and carbon footprint-aware management of
   \emph{Advancing Cloud Database Systems and Capacity Planning With Dynamic
   Applications}, p.~27, 2017.
 
+\bibitem{ITOR:ITOR12294}
+\BIBentryALTinterwordspacing
+S.~Iturriaga, B.~Dorronsoro, and S.~Nesmachnow, ``Multiobjective evolutionary
+  algorithms for energy and service level scheduling in a federation of
+  distributed datacenters,'' \emph{International Transactions in Operational
+  Research}, vol.~24, no. 1-2, pp. 199--228, 2017. [Online]. Available:
+  \url{http://dx.doi.org/10.1111/itor.12294}
+\BIBentrySTDinterwordspacing
+
 \bibitem{6566873}
 H.~Xu and B.~Li, ``Joint request mapping and response routing for
   geo-distributed cloud services,'' in \emph{2013 Proceedings IEEE INFOCOM},
   April 2013, pp. 854--862.
-
-\bibitem{7833029}
-C.~Feng, H.~Xu, and B.~Li, ``An alternating direction method approach to cloud
-  traffic management,'' \emph{IEEE Transactions on Parallel and Distributed
-  Systems}, vol.~28, no.~8, pp. 2145--2158, Aug. 2017.
-
-\bibitem{6678113}
-A.~Ghosh, S.~Ha, E.~Crabbe, and J.~Rexford, ``Scalable multi-class traffic
-  management in data center backbone networks,'' \emph{IEEE Journal on Selected
-  Areas in Communications}, vol.~31, no.~12, pp. 2673--2684, December 2013.
-
-\bibitem{Vazirani:2001:AA:500776}
-V.~V. Vazirani, \emph{Approximation Algorithms}.\hskip 1em plus 0.5em minus
-  0.4em\relax New York, NY, USA: Springer-Verlag New York, Inc., 2001.
-
-\bibitem{1984}
-N.~Megiddo and K.~J. Supowit, ``\BIBforeignlanguage{English}{On the complexity
-  of some common geometric location problems},''
-  \emph{\BIBforeignlanguage{English}{SIAM Journal on Computing}}, vol.~13,
-  no.~1, pp. 182--196, 1984.
-
-\bibitem{FOWLER1981133}
-\BIBentryALTinterwordspacing
-R.~J. Fowler, M.~S. Paterson, and S.~L. Tanimoto, ``Optimal packing and
-  covering in the plane are np-complete,'' \emph{Information Processing
-  Letters}, vol.~12, no.~3, pp. 133 -- 137, 1981. [Online]. Available:
-  \url{http://www.sciencedirect.com/science/article/pii/0020019081901113}
-\BIBentrySTDinterwordspacing
-
-\bibitem{bonn}
-J.~Vygen, ``Approximation algorithms for facility location problem,'' Research
-  Institute for Discrete Mathematic, University of Bonn, Tech. Rep., 2004.
-
-\bibitem{poli2017}
-\BIBentryALTinterwordspacing
-R.~Poli, J.~Kennedy, and T.~Blackwell, ``Particle swarm optimization,''
-  \emph{Swarm Intelligence}, vol.~1, no.~1, pp. 33--57, Jun. 2007. [Online].
-  Available: \url{https://doi.org/10.1007/s11721-007-0002-0}
-\BIBentrySTDinterwordspacing
-
-\bibitem{doi:10.1163/156939308784160703}
-\BIBentryALTinterwordspacing
-J.~OuYang, F.~Yang, S.~W. Yang, and Z.~P. Nie, ``The improved nsga-ii
-  approach,'' \emph{Journal of Electromagnetic Waves and Applications},
-  vol.~22, no. 2-3, pp. 163--172, 2008. [Online]. Available:
-  \url{http://dx.doi.org/10.1163/156939308784160703}
-\BIBentrySTDinterwordspacing
-
-\bibitem{magnier2008multiobjective}
-L.~Magnier, ``Multiobjective optimization of building design using artificial
-  neural network and multiobjective evolutionary algorithms,'' Ph.D.
-  dissertation, Concordia University, 2008.
-
-\bibitem{onut2008two}
-S.~{\"O}n{\"u}t, B.~G{\"u}ls{\"u}n, U.~R. Tuzkaya, G.~Tuzkaya \emph{et~al.},
-  ``A two-phase possibilistic linear programming methodology for
-  multi-objective supplier evaluation and order allocation problems,''
-  \emph{Information Sciences}, vol. 178, no.~2, pp. 485--500, 2008.
-
-\bibitem{sabri2000multi}
-E.~H. Sabri and B.~M. Beamon, ``A multi-objective approach to simultaneous
-  strategic and operational planning in supply chain design,'' \emph{Omega},
-  vol.~28, no.~5, pp. 581--598, 2000.
-
-\bibitem{concordia}
-L.~Magnier and F.~Haghighat, ``Multiobjective optimization of building design
-  using trnsys simulations, genetic algorithm, and artificial neural network,''
-  vol.~45, pp. 739--746, 03 2010.
-
-\bibitem{nygren2010akamai}
-E.~Nygren, R.~K. Sitaraman, and J.~Sun, ``The akamai network: a platform for
-  high-performance internet applications,'' \emph{ACM SIGOPS Operating Systems
-  Review}, vol.~44, no.~3, pp. 2--19, 2010.
-
-\bibitem{Auger:2009:THI:1527125.1527138}
-\BIBentryALTinterwordspacing
-A.~Auger, J.~Bader, D.~Brockhoff, and E.~Zitzler, ``Theory of the hypervolume
-  indicator: Optimal distributions and the choice of the reference point,'' in
-  \emph{Proceedings of the Tenth ACM SIGEVO Workshop on Foundations of Genetic
-  Algorithms}, ser. FOGA '09.\hskip 1em plus 0.5em minus 0.4em\relax New York,
-  NY, USA: ACM, 2009, pp. 87--102. [Online]. Available:
-  \url{http://doi.acm.org/10.1145/1527125.1527138}
-\BIBentrySTDinterwordspacing
 
 \end{thebibliography}
