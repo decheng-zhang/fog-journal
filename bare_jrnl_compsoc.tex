@@ -388,7 +388,8 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Towards a Planning and Design of Fog Networks}
+%\title{Towards a Planning and Design of Fog Networks}
+\title{Evolutionary Algorithm for Planning and Designing Fog Networks}
 %
 %
 % author names and IEEE memberships
@@ -489,8 +490,8 @@ E-mail: see http://www.michaelshell.org/contact.html
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-As a promising computing architecture, fog computing has attracted lots of attention from industry and research communities in recent years. With the huge number of heterogeneous and distributed devices performing computational and storage tasks between the cloud and users, fog computing can be an answer to the surging challenges in today's networks. However, due to the decentralized and heterogeneous nature of fog networks, planning a fog network can be a complicated and challenging task. To deal with this problem, we first propose a multi-objective mathematical model that simultaneously deals with the fog node placement, fog node dimensioning and demand routing. The model optimizes the tradeoff front (Pareto front) between capital expenditure and network delay in dual objective functions. Then, we analyze the performance of an exact algorithm (branch and bound) and two evolutionary algorithms (genetic algorithm and particle swarm algorithm) on this problem, showing that the evolutionary algorithms offer a good balance between the Pareto optimality and computation time efficiency. Inspired by the existing evolutionary algorithms, we proposed a new evolutionary algorithm, named PSONSGA, which combines the convergence efficiency from NSGA-II and the searching efficiency from SMPSO.  
-The results demonstrate that the evolutionary algorithms are highly efficient compared to the exact algorithm. Among the three evolutionary algorithms, the algorithm we proposed (PSONSGA) gives the best Pareto front solutions which shows the good convergence to the true optimal front and the evenly distribution character. The proposed algorithm can be a valuable planning tool for real-world fog network planning.
+As a promising computing architecture, fog computing has attracted a lot of attention from industry and research communities in recent years. With the huge number of heterogeneous and distributed devices performing computational and storage tasks between the cloud and users, fog computing can be an answer to the surging challenges in today's networks. However, due to the decentralized and heterogeneous nature of fog networks, planning a fog network can be a complicated and challenging task. To deal with this problem, we first propose a multi-objective mathematical model that simultaneously deals with the fog node placement, fog node dimensioning and demand routing. The model optimizes the tradeoff front (Pareto front) between capital expenditure and network delay in dual objective functions. Then, we analyze the performance of an exact algorithm (branch and bound) and two evolutionary algorithms (NSGA-II and SMPSO) on this problem, showing that the evolutionary algorithms offer a good balance between the Pareto optimality and computation time efficiency. Inspired by the existing evolutionary algorithms, we proposed a new evolutionary algorithm, named PSONSGA, which combines the convergence efficiency from NSGA-II and the searching efficiency from SMPSO.  
+The results demonstrate that the evolutionary algorithms are highly efficient compared to the exact algorithm. Among the three evolutionary algorithms, the algorithm we proposed (PSONSGA) gives the best Pareto front solutions which shows the good convergence to the true optimal front and the evenly distribution character. The proposed algorithm can be a valuable planning tool for the upcoming deployment of fog networks.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -555,43 +556,30 @@ Fog Computing, Network Planning, Multi-Objective, Modular Facility Location, Heu
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{T}{he} conventional cloud computing paradigm has been applied as a solution for delivering a diverse range of services; however, the long network distance between edge devices and remote datacenter hinders the service quality of the application, resulting in high latency, high bandwidth consumption and unreliable connectivity\cite{Vaquero:2014:FYW:2677046.2677052}. 
-\iffalse
+\IEEEPARstart{T}{he} conventional cloud computing paradigm has been applied as a solution for delivering a diverse range of services. However, the long network distance between edge devices and remote datacenters hinders the service quality of the application, resulting in high latency, high bandwidth consumption and unreliable connectivity~\cite{Vaquero:2014:FYW:2677046.2677052}. 
+\iffalse %COMMENT MARC: why do you have all these ifffalse? if this is not required, I would remove it as it does not even appear in your text... and it is confusing when we read the latex file...
 These issues may lead to performance degradation in video streaming, online gaming, and augmented reality applications, since these applications are very sensitive to latency variation. 
 \fi
-Even worse is the challenges posed by the Internet of things (IoT) applications. For instance, IoT applications usually require mobility support, geo-distribution, location-awareness and low latency \cite{bonomi2014fog}. The traditional cloud system can hardly provide these supports and have problems unsolved in service management, connectivity and security challenges\cite{yi2015survey}. 
+Even worse is the challenges posed by the Internet of things (IoT) applications. For instance, IoT applications usually require mobility support, geo-distribution, location-awareness and low latency~\cite{bonomi2014fog}. The traditional cloud system can hardly provide these requirements and have unsolved problems in service management, connectivity and security challenges~\cite{yi2015survey}. 
 
-To address the aforementioned challenges, Cisco proposed the potential solution of fog computing. The idea of fog computing is to bring the computation, communication and storage closer to the end-users \cite{yi2015survey}. In this platform, applications and workloads are run over a local micro-datacenters (named Fog), instead of connecting to the remote cloud. Since the service are hosted on the mini-cloud facility in the vicinity of end users, the dispensable network hops can be eliminated thus minimizing the response time for applications. In addition, fog computing can alleviate the traffic congestion in the internet backbone, since in fog computing network, the huge amount of traffic generated by end devices can be locally handled by fog servers. Typically, the fog architecture can be described as shown in \Fig{foggg}. The fog architecture is deployed as a large number of micro-datacenters, which are often distributed over a geographical region of interest. These fog nodes connect to access networks and remote clouds to provide storage and computing services without the intervention of third-parties \cite{chiang2016fog}.
+To address the aforementioned challenges, Cisco proposed the potential solution of fog computing. The idea of fog computing is to bring the computation, communication and storage closer to the end-users~\cite{yi2015survey}. In this platform, applications and workloads are run over a local micro-datacenters (named fog), instead of connecting to the remote cloud. Since services are hosted on the mini-cloud facility in the vicinity of the end users, the dispensable network hops can be eliminated thus minimizing the response time for applications. In addition, fog computing can alleviate the traffic congestion in the Internet backbone since the huge amount of traffic generated by end devices can be locally handled by the fog servers. Typically, the fog architecture can be described as shown in~\Fig{foggg}. The fog architecture is deployed as a large number of micro-datacenters, which are often distributed over a geographical region of interest. These fog nodes connect to access networks and remote clouds to provide storage and computing services without the intervention of third-parties~\cite{chiang2016fog}.
 
-
-%Different from traditional cloud, Applications will run in a sandboxed environment onto the universal Fog hardware.
-\begin{figure}[h]
-\centerline{\includegraphics[width=3.5in]{fog-g.png}}
+\begin{figure}[ht]
+\centerline{\includegraphics[width=\columnwidth]{fog-g.png}}
 \caption{Typical fog network architecture} 
 \label{foggg}
 \end{figure}
-%
-
-%As shown in \Fig{foggg}, 
-%Although, cloud and fog share the same compute, storage and networking techniques, 
-
-%However, planning fog networks can be a complicated task due to the following reasons: %behind fog network planning including but not limited to:
-%However, a number of characteristics make the planning of fog networks a non-trivial task.
-
-
-%However, %Fog Network vendor will then lease their fog infrastructure to different services providers. 
-The proximity offered by fog networks addresses the challenges facing today's cloud centre, and enables low-latency IoT applications.
-However, when it comes to the planning of fog network, considering the decentralized nature of the fog network combined with a vast number of edge devices, obtaining the optimal network design can be challenging. 
-Several factors have to be taken into consideration as follow.
+ 
+The proximity offered by fog networks addresses the challenges facing today's cloud infrastructures, and enables low-latency IoT applications. However, when it comes to the planning of fog networks, considering the decentralized nature of the fog network combined with a vast number of edge devices, obtaining the optimal network design can be challenging. The following factors must be taken into consideration:
 %For instance:
 \begin{itemize}
-\item Fog facilities need to be highly decentralized.
+\item Fog facilities need to be highly decentralized and close to the edge devices.
 \item The fog architecture needs to take into account heteromerous hardware requirements.
 \item User demands need to be distributed across multiple facilities.
 \item The center cloud needs to be able to connect and cooperate with the fog facilities.
 \end{itemize}
 
-Unfortunately, a comprehensive survey in the state-of-the-art fog research has noted that the planning and design of fog system deployment has not received any attention so far \cite{mouradian2017comprehensive}. To deal with this problem and provide high-performance fog system design, we propose a mathematical model in this paper, which simultaneously determines the optimal location, the capacity and the number of fog node(s) as well as the interconnection between the installed fog nodes and the cloud. The goal of the model is to minimize the network latency and capital expenditure. To address the multi-objective functions in the problem, one exact algorithm and three approximation algorithms are used and compared in terms of the delay, CPU time and multi-objective quality indicators. 
+Unfortunately, a comprehensive survey in the state-of-the-art fog research has noted that the planning and design of fog system deployment has not received any attention so far~\cite{mouradian2017comprehensive}. To deal with this problem and provide high-performance fog system design, we propose a mathematical model in this paper, which simultaneously determines the optimal location, the capacity and the number of fog node(s) as well as the interconnection between the installed fog nodes and the cloud. The goal of the model is to minimize the network latency and capital expenditure. To address the multi-objective functions in the problem, one exact algorithm and three approximation algorithms are used and compared in terms of the delay, CPU time and multi-objective quality indicators. 
 
 %With the difficulties mentioned above and the complexity of future networks, service providers need efficient planning tools to implement fog computing networks. 
 
@@ -600,7 +588,7 @@ Essentially, the fog planning problem constitutes two problems, each of them has
 \item Modular facility location problem
 \item Resource allocation problem
 \end{itemize}
-In addition, from the operator point of view, the objectives of fog planning can be targeted to two conflicting objectives:
+In addition, from the operator point of view, the objectives of the fog planning can be targeted to two conflicting objectives:
 \begin{itemize}
 \item Minimize capital expenditure
 \item Minimize network delay
@@ -695,14 +683,17 @@ The proposed framework solves two kinds of planning scenario: green field scenar
 \item Preprocessing the result from step 1, label unfitted user-fog connection based on policy/environment restriction.
 \item Running multi-objective optimizing for fog planning based on user-fog connection matrix, with regarding to cost and network performance objectives 
 \end{enumerate}
+
 \begin{figure}[t]
 \centerline{\includegraphics[width=3.0in]{Fogplanningmethod.png}}
 \caption{Fog Planning Phases} 
 \label{fpphase}
 \end{figure}
+
 The optimization in this paper build on the multi-objective work carried out in NSGAII\cite{Deb:2002:FEM:2221359.2221582} and SMPSO \cite{smpso}. The integrated characteristic of multi-objective implies that facility location and user-allocation were combined together. A typical trade-off front solution is illustrated in Fig. \ref{tradeofffront}. The integer string shows which location will be installed with which kind of fog (where 1 represents installing fog type 1, 2 represent type 2, etc. and 0 a closed location). Not only multi-objective model is more straightforward in formulation, but also, we can impose extra constraints based on decision maker's preference and still produce valid solutions with regard to objectives. A common circumstance is, we want to reduce the number of fog installed in this region for management cause, we can easily increase the rental fee or impose a factor $\lambda$, ($ \lambda \geq 1$) on rent. In this way, we increase the proportion of rent cost in associated objective. Therefore, the multi-objective will give solutions with less location open but each open location with much powerful machine. We can observe in Fig. \ref{tradeofffront}, imposing cost factor reduces the total number of fog opened. 
 The purpose of this paper is to present a method for exploring trade-off settings in Fog planning. With regard to different network performance, the setting includes fog location, capacity provisioning and user allocation. The decision maker can then use this well-informed and flexible trade-off solutions to make planning decision with confidence no better facility location option left out.
-\begin{figure}
+
+\begin{figure}[ht]
 \centerline{\includegraphics[width=3.5in]{nov1-fpp.png}}
 \caption{Pareto Front Solutions} 
 \label{tradeofffront}
@@ -710,6 +701,7 @@ The purpose of this paper is to present a method for exploring trade-off setting
 \fi
 
 The remainder of the paper is organized as follows. In Section \ref{probfor}, the Fog Planning Problem (FPP) formulation with dual objective functions is presented. In Section \ref{nphard}, the NP-hardness of the Fog Planning model is analyzed. Section \ref{alfpp} presents a comprehensive explanation of the multi-objective algorithms and optimization procedures. The multi-objective algorithms include the weighted sum method, NSGA-II algorithm, SMPSO algorithm and proposed PSONSGA algorithm. Numerical results are presented in Section \ref{express}, including the evaluation and comparison in terms of the solution quality and computation time. In Section \ref{relwork}, we overview some related works in the area of fog computing and distributed-cloud planning. Finally, conclusions are drawn in Section \ref{conclu}.
+
 \section{Problem Formulation}\label{probfor}
 To help understand the problem modelling, we first introduce the following basic concepts.
 
@@ -745,7 +737,8 @@ To formulate the fog planning model, we assume the following information is know
 \item The fog nodes send a fix ratio $\tau$ of their total traffic to the cloud. The $\tau$ here is a tunable parameter. Different applications will have a different value of $\tau$ which captures the amount of traffic that needs to be sent from the fog nodes to the cloud. The possible components of this traffic include database synchronization, data uploading, service management, etc.
 \end{itemize}
 \iffalse
-\begin{figure}
+
+\begin{figure}[t]
 \centerline{\includegraphics[width=4.5in]{existset.png}}
 \caption{Potential Locations, Modular Fog types and Existing Computation Facility} 
 \label{exist}
@@ -971,7 +964,8 @@ The experiment result shows that neither NSGAII nor SMPSO is capable to produce 
 \subsubsection{Non-dominated Sorting Genetic Algorithm II}
 NSGA-II follows the same steps as the classical GA. The classical GA first initializes a population of \textit{N} individuals, then it generates offsprings by applying the crossover and mutation operations, and finally evaluates and selects the fittest solutions as output solutions. What differentiates NSGA-II from previous algorithms (such as VEGA and HLGA) is an intuitive invention of the fast elitist ranking procedure (Non-dominated Sorting). Using this fast ranking procedure, NSGA-II always preserves the best (higher rank in non-dominated rank and larger crowding distance) solutions inside the latest population. 
 The pseudocode of the NSGA-II algorithm is presented in Fig \ref{nsga2}.
-\begin{figure}[h]
+
+\begin{figure}[ht]
 \caption{NSGA-II Algorithm}
 \indent\fbox{%
 \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
@@ -1003,7 +997,7 @@ The pseudocode of the NSGA-II algorithm is presented in Fig \ref{nsga2}.
 \end{figure}
 
 \iffalse
-\begin{figure}[h]
+\begin{figure}[ht]
 \caption{NSGA-II Algorithm}
 \noindent\fbox{%
 \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
@@ -1058,7 +1052,7 @@ $r_1$ and $r_2 $ add randomness between the global and local searching direction
 %Instead of putting all solution within same ``swarm population", SMPSO maintains another ``elite archive", in which only stores non-dominated solution with highest crowding distance. 
 %Different from genetic algorithm, all the global points in speed computing process are selected from this ``archive population". SMPSO also applies mutation operation upon part of the swarm population in order to diversify the swarm solutions.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \caption{SMPSO Algorithm}
 \indent\fbox{%
 \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
@@ -1087,21 +1081,22 @@ $r_1$ and $r_2 $ add randomness between the global and local searching direction
 \end{figure}
 
 
-
 \subsection{Proposed EMO Algorithm (PSONSGA)}
 Previous studies in NSGA-II and SMPSO mainly focus on applying these algorithms on continuous problems. 
 However, for discrete problems, such as the combinatorial problem we are dealing with, the preliminary results of our experiment reveal that these two heuristic algorithms hold different characteristics.% compared to their counterparts in continuous domain.
 
 As shown in \Fig{nsgalabel}, the NSGA-II performs efficiently regarding the convergence to the Pareto front, however, its solution points are unevenly distributed in the search space.  Even if we change the mutation index or the crossover index settings, no obvious improvement can be perceived. The researchers in 
 \cite{doi:10.1163/156939308784160703}, have observed the same disadvantage in continuous NSGA-II applications. This disadvantage stems from the NSGA-II's sorting process. The concentrated effect in the non-dominated sorting harms the diversity in NSGA-II solutions. % as can be seen in \Fig{nsgauneven}.
-\iffalse\begin{figure}[H]
+
+\iffalse\begin{figure}[ht]
 \centerline{\includegraphics[page=1,width=5.in]{nsgauneven.png}}
 \caption{The diversity is influenced by the concentrated sorting process \cite{doi:10.1163/156939308784160703}} 
 \label{nsgauneven}
 \end{figure} 
 \fi
 The researchers in \cite{doi:10.1163/156939308784160703} proposed an elitism strategy to overcome this shortcoming. However, the time-complexity involved in evaluating the elitism sets is high, and can be a huge issue for large scale problems.
-\begin{figure}[h]
+
+\begin{figure}[ht]
 \centerline{\includegraphics[page=1,width=3.5in]{nsgaitertest_label.pdf}}
 \caption{NSGA-II algorithm struggles to cover the whole Pareto front} 
 \label{nsgalabel}
@@ -1111,7 +1106,7 @@ The researchers in \cite{doi:10.1163/156939308784160703} proposed an elitism str
 On the other hand, SMPSO shows different characteristics. The preliminary experiment demonstrates that SMPSO performs efficiently on exploring the whole front. It preserves the diversity in the solutions set and always produces evenly distributed Pareto frontiers. However, after a given number of iterations, SMPSO struggles to push the solution set to converge to the true optimal front. 
 The preliminary results are shown in \Fig{smpsolabel}.
 %The reason is the way SMPSO search scheme works seems has trouble go to the global optimal. My analogy is that ant search for food. They good at find new search direction, but not good at converge to the global best route.
-\begin{figure}[H]
+\begin{figure}[ht]
 \centerline{\includegraphics[page=1,width=3.5in]{SMPSO_iterationtest_label.pdf}}
 \caption{SMPSO algorithm struggles to converge to true pareto front} 
 \label{smpsolabel}
@@ -1132,7 +1127,8 @@ The aggressive selection enforces the convergence of solutions and the extension
 In the first 50\% of the PSONSGA iterations, the PSO procedure is employed to explore the decision space, and to test different search directions (see rows 3-12). The position and velocity updating mechanism in PSO, speeds up this searching process. The diversity in population is preserved before proceeding to the next phases. 
 \textbf{NSGA-II procedure}
 In the last 50\% of the run of PSONSGA, the population is expected to be evenly diversified and relatively close to the Pareto front. The main goal is not to explore the searching space anymore but to increase the closeness to the optimal solutions (see rows 17-27) \cite{concordia}. The NSGA-II procedure, including non-dominated sorting, is executed to concentrate the solutions towards the true optimal front. Also, we employ an aggressive selection process as proposed in \cite{concordia} (see row 24).
-\begin{figure}[h]
+
+\begin{figure}[ht]
 \caption{PSONSGA Algorithm}
 \indent\fbox{%
 \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
@@ -1305,7 +1301,8 @@ It is worth noting that, user-group here can represents a dynamic group of peopl
 For each potential location, four different types can be installed. 
 \iffalse
 In real life deployment, fog type 1 can be analogy of one full rack of servers, fog type 2 can be two racks of servers, and type 3...etc.
-\begin{figure}[H]
+
+\begin{figure}[ht]
 \centerline{\includegraphics[width=3.in]{Drawing1.png}}
 \caption{Fog Type} 
 \label{rack}
@@ -1352,7 +1349,7 @@ We first apply the weighted sum method to solve the problem. To produce the Pare
 For each weight pair running, the CPLEX solver time limit was set to 2h. And the total running for single Pareto front solve time limit equals to (2 x 11)h. 
 \fi
 \iffalse
-\begin{table}[H]
+\begin{table}[ht]
 \caption{Weights Table}
 \label{weightpair}
 \centering
@@ -1372,7 +1369,7 @@ For each weight pair running, the CPLEX solver time limit was set to 2h. And the
 \end{tabular}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[ht]
 \centerline{\includegraphics[width=3.5in]{9010pf.pdf}}
 \caption{Exact Solution Pareto Front} 
 \label{espf}
@@ -1406,11 +1403,13 @@ Noticeably, even if we run 11 single-objective optimizations. We cannot expect t
 \subsection{Detailed Example}
 In this section, a detailed example is presented to explain the FPP planning results. The first instance of FPP3010 is solved with the weighted sum method, NSGA-II, SMPSO and PSONSGA algorithms. The FPP3010 assumes that one needs to plan and design a brand new fog network to accommodate 30 edge-clusters. To achieve this, we need to find the optimal number, location and capacity of fog nodes. \Fig{nettopology} shows the initial planning area with 30 edge-clusters and 10 potential locations that are uniformly distributed in a $100km \times 100km$ area. 
 Each edge-cluster has resource demands which need to be accommodated. 
-\begin{figure}[H]
+
+\begin{figure}[ht]
 \centerline{\includegraphics[trim=0 50 0 50,clip,width=3.8in]{100x100problem.png}}
 \caption{Edge-cluster locations and potential locations of fog for FPP3010 (instance-1)} 
 \label{nettopology}
 \end{figure}
+
 \subsubsection{Results from the Weighted Sum Method}
 The results for problem FPP3010 (instance-1) by using the weighted sum method are shown in Table \ref{CPLEXresultssample}. The first column shows the solution index which makes reference to the 11 different weight combinations. The following two columns contain the decision output for the link type and the fog type at each location. Columns 4 and 5 provide the results of the two objective functions (cost and delay respectively) obtained with the weighted sum method. Finally, column 6 shows the relative Mixed-Integer Programming (MIP) gap. The MIP gap represents the percentage gap between the solution value found by CPLEX and the value of the optimal. For example, a 0.05 relative MIP gap means that CPLEX has found a solution that is five percent from the optimal. Using CPLEX to solve the FPP3010 (instance-1), we can find 7 solution frontiers (as shown by the 7 different solutions from Table \ref{CPLEXresultssample}, the duplicated results are grey colored) . 
 
@@ -1444,7 +1443,7 @@ The results for problem FPP3010 (instance-1) by using the weighted sum method ar
 \end{table}
 %\Fig{espf} shows the Pareto front in Table \ref{CPLEXresultssample}. 
 \iffalse
-\begin{figure}[H]
+\begin{figure}[ht]
 \centerline{\includegraphics[width=5.5in]{FPP3010-instance1png.png}}
 \caption{An example of exact solution Pareto front} 
 \label{espf}
@@ -1514,7 +1513,7 @@ The solution frontiers, for FPP3010 by applying NSGA-II, SMPSO, PSONSGA, are plo
 
 
 
-\begin{table}[h]
+\begin{table}[ht]
  % tabular material here
 \caption{NSGA-II's solution set for FPP3010 (instance-1)}\label{table:solution.obj.nsgaii}
 \centering
@@ -1583,7 +1582,7 @@ The solution frontiers, for FPP3010 by applying NSGA-II, SMPSO, PSONSGA, are plo
 \end{table}
 
 \iffalse
-\begin{table}[H]
+\begin{table}[ht]
  % tabular material here
 %\caption{NSGA-II's solution set for FPP3010 (instance-1)}\label{table:solution.obj.nsgaii}
 \centering
@@ -1665,7 +1664,7 @@ For same problem instance: \textit{30-10}, we run 10 independent tests for each 
 \caption{Best NSGAII Setting's Pareto Front Result} 
 \end{figure*}
 
-\begin{table}[H]
+\begin{table}[ht]
 \caption{NSGAII Parameter Selection}
 \label{nsgaparatable}
 \centering
@@ -1739,7 +1738,7 @@ The reason behind this is, NSGAII's solutions is highly dependent on the initial
 \caption{Best SMPSO Setting (Swarm Size)'s Pareto Front Result} 
 \end{figure*}
 
-\begin{table}[H]
+\begin{table}[ht]
 \caption{SMPSO Parameter Selection}
 \label{smpsoparatable}
 \centering
@@ -1762,7 +1761,7 @@ As we can see, the results that SMPSO produced, show good coverage of whole Pare
 The \Fig{smpsoitertest} shows the result of running SMPSO on (30-10) FPP problem, with best parameter settings from previous experiment (Table \ref{smpsoparatable}) undergoing \{1000, 1500, 2000, ..., 5500\} iterations. Although there is convergence improvement giving more iteration running. The 5500 iteration running result is still inferior than counterpart result from NSGAII algorithm convergence-wise.
 
 
-\begin{figure}[H]
+\begin{figure}[ht]
 \centerline{\includegraphics[page=1,width=3.5in]{SMPSO_iterationtest.pdf}}
 \caption{SMPSO Iteration Test} 
 \label{smpsoitertest}
@@ -1772,7 +1771,8 @@ The \Fig{smpsoitertest} shows the result of running SMPSO on (30-10) FPP problem
 As we discussed before, Although NSGAII has better convergence efficiency compared to Particle Swarm Algorithm. NSGAII algorithm suffers from restriction of initial solution set. Without good initial solution, NSGAII has difficulty to reach the whole Pareto front. In contrast, SMPSO algorithm displays better coverage of the whole Pareto front due to the particle relocation mechanism behind PSO. Given enough iteration, SMPSO can always reach extreme point successfully. Which is an important criteria for Pareto front quality. However, PSO algorithm display hardness to push the convergence toward true Pareto front even with extended iterating, as can be seen in \Fig{smpsoitertest}.
 The algorithm PSONSGA we proposed here, combines both NSGAII's convergence advantage and SMPSO's coverage advantage. 
 For parameter setting of NSGAII and SMPSO subroutine, we use the best parameter setting found in subsection \ref{nsga}, subsection \ref{smpso}.
-\begin{table}[H]
+
+\begin{table}[ht]
 \caption{PSONSGA Parameter Selection}
 \label{psonsgaparatable}
 \centering
@@ -1821,7 +1821,8 @@ FogPlanningProblem9010 & $  3.41e-01_{ 2.3e-02}$ & \cellcolor{gray25}$  3.74e-01
 \end{table}
 
 Also, the execution time (Fig \ref{eta}) shows that PSONSGA is highly promising in multi-objective FPP optimization. In particular, when problem size scales up, FPP can be expected to produce near optimal result under reasonable execution time. This property is even prominent if we consider the dynamic extension of current generalized FPP model. 
-\begin{figure}[H]
+
+\begin{figure}[ht]
 \centerline{\includegraphics[page=1,width=3.5in]{executiontimechart}}
 \caption{Execution Time of NSGAII SMPSO PSONSGA and CPLEX} 
 \label{eta}
@@ -1940,7 +1941,7 @@ Since the output of each MO algorithm is a non-dominated solution set, we employ
 \iffalse
 Table \ref{table:median.HV.nsgaii} shows the HV results for the first instance of the 26 problems. The first column shows the problem number which corresponds to the first column of Table \ref{problemsizes}. The following two columns contain the HV results and the CPU times obtained by solving FPP with the weighted sum method. Column 4 shows the gap (expressed as a percentage) between the solution HV value obtained with the weighted sum, and the best HV value among the four algorithms. The following three columns show the HV value, the corresponding CPU time as well as the gap for the NSGA-II algorithm. The next three columns are the results for the SMPSO algorithm. Finally, similar information for the PSONSGA algorithm is provided in the last three columns. The results for the other three instances are presented in Appendix B1, B2 and B3.
 
-\begin{table}[H]
+\begin{table}[ht]
 \caption{HV value and CPU time for instance-1}
 \label{table:median.HV.nsgaii}
 \centering
@@ -1996,11 +1997,13 @@ Table \ref{table:median.HV.nsgaii} shows the HV results for the first instance o
 HV indicator examines both the convergence and diversity properties of a solution set. In these perspectives, PSONSGA algorithm displays its superiority in finding a good quality solution within reasonable computation time. In fact, for all four problem instances (a total of 104 different problems), PSONSGA provides the best HV value for 95 problems (91.3\%). The NSGA-II and SMPSO each provides the highest HV value for 19 different problems (18.2\%). The weighted sum approach only provides the best HV value for 2 problems (1.92\%).
 
 \Fig{hvaverage} provides a complete comparison of the HV values amongst the weighted sum, NSGA-II, SMPSO and PSONSGA algorithms over the four instance sets with a 95\% confidence interval.
-\begin{figure}[h]
+
+\begin{figure}[ht]
 \centerline{\includegraphics[page=1,width=3.5in]{hvaverageoverfour.png}}
 \caption{HV indicator comparison (over four instance sets)} 
 \label{hvaverage}
 \end{figure}
+
 As shown in \Fig{hvaverage}, the PSONSGA algorithm achieves the best balance between convergence and diversity amongst the three evolutionary algorithms. The weighted sum approach produces worse HV values, because each individual branch and bound search can only produce one single solution. We can also notice that for large-scale problems, NSGA-II's HV values are worse than all three other algorithms. This is due to the larger search space in large-scale problems and the concentrated effect of the non-dominated sorting in the NSGA-II algorithm.
 \subsubsection{IGD Indicator Comparison}
 
@@ -2014,7 +2017,7 @@ As shown in Table \ref{table:igd}, PSONSGA displays its superiority over the wei
 This two-phase procedure has been proven to reach better Pareto front results as shown by the IGD indicator comparison.
 
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{IGD indicator comparison (average over four instances)}\label{table:igd}
 \centering
 \begin{scriptsize}
@@ -2059,14 +2062,17 @@ This two-phase procedure has been proven to reach better Pareto front results as
 Since we solved the weighted sum formulation with CPLEX solver, each solution point from the CPLEX solver is an optimal solution. In other words, under the same expense condition, the traffic delay produced by the weighted sum and CPLEX can achieve the optimum. Using CPLEX solutions as the reference, we calculate the average delay gaps between CPLEX and the evolutionary algorithms. The average delay gaps were computed only if the same cost exists in the weighted sum solution sets and CPLEX has found the optimal solutions (the relative MIP equals to zero). 
 \iffalse
 \Fig{delaygapinstanc1} presents the comparison in terms of delay gaps between the three evolutionary algorithms for problems of first instance. As shown in \Fig{delaygapinstanc1},  NSGA-II comes in the first place in terms of the delay gaps over 26 problems with an average gap of 0.3\% . PSONSGA gives the second best performance with less than or equal to the delay in NSGA-II in 12 of 26 problems with an average gap of 0.4\%. An intensive statistical analysis for delay gaps is presented in Table \ref{delaygapss}
-\begin{figure}[H]
+
+\begin{figure}[ht]
 \centerline{\includegraphics[page=1,width=5.5in]{delaygapfiture.png}}
 \caption{Delay gaps (instance-1)} 
 \label{delaygapinstanc1}
 \end{figure}
+
 \fi
 Table \ref{delaygapss} shows the statistical analysis for delay gaps over the four instance sets. The first three columns represent the minimum, the maximum, and the average delay gaps. The following two columns are the standard deviation and the 95\% confidence interval for the average delay gaps. As shown in Table \ref{delaygapss}, without considering the diversity and distribution in solution sets, NSGA-II gives the best delay gaps to optimal solutions. The reason behind this is the non-dominated sorting in NSGA-II concentrates the solution sets towards the optimal front. However, this sorting process sacrifices the solution diversity for a better convergence quality. This is the same reason why the solutions produced by the NSGA-II algorithm provide worse HV values. PSONSGA achieves the second best among the three evolutionary algorithms.
-\begin{table}[h]
+
+\begin{table}[ht]
 \centering
 \caption{Delay gap comparison (over four instance sets)}\label{delaygapss}
 \resizebox{\columnwidth}{!}{
@@ -2081,20 +2087,23 @@ PSONSGA&0.00&7.80&0.50&1.12&0.50$\pm$0.21\\
 \hline
 \end{tabular}}
 \end{table}
+
 \subsubsection{CPU Time Comparison}
 \Fig{cputimeover4} provides the comparison in terms of the CPU time between the weighted sum method and the three evolutionary algorithms over the four instance sets with a 95\% confidence interval. 
+
 \iffalse
-\begin{figure}[H]
+\begin{figure}[ht]
 \centerline{\includegraphics[page=1,width=5.5in]{nv26cputime.png}}
 \caption{CPU time comparison (instance-1)} 
 \label{cputimecomparison}
 \end{figure}
 \fi
+
 As shown in \Fig{cputimeover4}, all three evolutionary algorithms can provide good quality Pareto frontier in a reasonable amount of time. For small-scale problems (problems 1 to 12), the three evolutionary algorithms can finish the optimization within 30 seconds. For large-scale problems, evolutionary algorithms' solution times are still within a reasonable range. For example, to solve problem 26 (instance-1), NSGA-II, SMPSO, PSONSGA, each respectively took 5,303 seconds, 1,639 seconds and 5,464 seconds. In comparison, the weighted sum method using the Cplex solver takes 19,510 seconds, which is approximately 3.5 times longer than PSONSGA. We also notice that, although fast for small size problems, CPLEX's CPU time is almost increasing exponentially with respect to the problem size. This corresponds with the fact that the fog planning problem is NP-hard as described before.
 \iffalse
 \Fig{cputimeover4} further presents a complete CPU time comparison  As shown in \Fig{cputimeover4}, we can reach the same conclusion that all three evolutionary algorithms can generate close-to-optimal solutions in a reasonable amount of time.
 \fi
-\begin{figure}[h]
+\begin{figure}[ht]
 \centerline{\includegraphics[page=1,width=3.5in]{cputimeover4}}
 \caption{CPU time comparison (over four instance sets)} 
 \label{cputimeover4}
@@ -2124,7 +2133,7 @@ Among all the work describe above that are directly related to the distributed-c
 
 
 \section{Conclusion}\label{conclu}
-We proposed a multi-objective modular facility location model for planning Fog Network. The multi-objective combinatorial model enables us to fully explore the searching domain with different fog location selection, fog type selection and user allocation combinations. The model produces the Pareto front solution set over two objectives: the network delay and the building cost. Decision maker can use this Pareto front to make reliable decision on fog infrastructure building plan. 
+In this paper, we proposed a multi-objective modular facility location model for planning fog networks. The multi-objective combinatorial model enables us to fully explore the searching domain with different fog location selection, fog type selection and user allocation combinations. The model produces the Pareto front solution set over two objectives: the network delay and the building cost. Decision maker can use this Pareto front to make reliable decision on fog infrastructure building plan. 
 And we propose to apply exact algorithm (weighted sum) and heuristic algorithm (NSGAII, SMPSO and PSONSGA) to solve the model. The results from the weighted sum, NSGA-II, SMPSO and PSONSGA are compared in terms of the HV indicator, IGD indicator and delay gaps. The experimental results confirm that evolutionary algorithms can be notably efficient in execution time compared to the weighted sum based approach. From the HV and IGD indicator perspectives, PSONSGA achieves the best HV and IGD values for most of the problem sizes. In contrast, NSGA-II was able to return good solutions in terms of the delay objective value without considering the diversity and coverage of solution frontiers.
 In the real world of fog planning, the number of edge-clusters can be extremely large, and the network topology, conditions and restrictions will be more complicated. Therefore, using the weighed sum method and CPLEX can be time-consuming. In fact, the proposed algorithm can be more appropriate in this situation. PSONSGA is recommended for solving the fog planning problem as it achieves the best balance between the solution diversity, convergence and computation time.
 
