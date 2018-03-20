@@ -567,20 +567,20 @@ The proximity offered by fog networks addresses the challenges facing today's cl
 \item The center cloud needs to be able to connect and cooperate with the fog facilities.
 \end{itemize}
 
-Unfortunately, a recent comprehensive survey in the state-of-the-art fog research has noted that the planning and design of fog system deployment has not received any attention so far~\cite{mouradian2017comprehensive}. To deal with this problem and provide high-performance fog system design, we propose a mathematical model in this paper, which simultaneously determines the optimal location, the capacity and the number of fog node(s) as well as the interconnection between the installed fog nodes and the cloud. The goal of the model is to minimize the network latency and capital expenditure. To address the multi-objective functions in the problem, one exact algorithm and three approximation algorithms are used and compared in terms of the delay, CPU time and multi-objective quality indicators. 
+Unfortunately, a recent comprehensive survey in the state-of-the-art fog research has noted that the planning and design of fog system deployment has not received any attention so far~\cite{mouradian2017comprehensive}. To deal with this problem and provide high-performance fog system design, we propose a mathematical model in this paper, which simultaneously determines the optimal location, the capacity and the number of fog node(s) as well as the interconnection between the installed fog nodes and the cloud. Since this model is a multi-objective model, we address the multi-objective functions with one exact algorithm and three approximation algorithms, and compare the results in terms of the delay, CPU time and multi-objective quality indicators. 
 
 Essentially, the fog planning problem is composed of two sub-problems, each of them has been proven to be NP-hard:
 \begin{itemize}
 \item Modular facility location problem \cite{megiddo1983maximum,1.43} %COMMENT: Can you add a reference showing that this problem is NP-hard
 \item Resource allocation problem \cite{trove.nla.gov.au/work/12815220}%COMMENT: Can you add a reference showing that this problem is NP-hard
 \end{itemize}
-In addition, from the operator point of view, the objectives of the fog planning can be targeted to two conflicting objectives:
-\begin{itemize}
-\item Minimize capital expenditure
-\item Minimize network delay
-\end{itemize}
+%In addition, from the operator point of view, the objectives of the fog planning can be targeted to two conflicting objectives:
+%\begin{itemize}
+%\item Minimize capital expenditure
+%\item Minimize network delay
+%\end{itemize}
 
-Single-objective optimization is commonly used in network planning. The designing process is essentially an allocation problem which maximizes the network utility function over a fixed capital expenditure constraint. 
+By convention single-objective optimization is used in network planning. The designing process is essentially an allocation problem which maximizes the network utility function over a fixed capital expenditure constraint. 
 However, in single-objective solution, network designers must use a form of trail and error to try different budget options. The inability to derive an analytical perspective of the problem requires the network designer to execute the single-objective optimization multiple times, thus increasing the computational overhead. 
 As opposed to single-objective optimization, multi-objective optimization, we adopt in this work, is more desirable for a network design, due to two major reasons. First, multi-objective optimization techniques attempt to find multiple non-dominated and isolated solutions in a single simulation by emphasizing multiple solutions towards Pareto-front; therefore, speeding up the optimizing process. 
 Second, in network planning, it may be possible to greatly improve the network performance whilst incurring a very small increase in capital expenditure. Such compromise solutions can be easily missed using the single objective method. Therefore, we employ multi-objective optimization in this work to find the optimal set of trade-off solutions and take all the objectives into considerations.
@@ -680,7 +680,7 @@ where $\sigma$ is the packet size (bytes) and $\kappa$ represents the link speed
 \end{align}
 where $d_{ab}$ is the euclidean distance between edge-cluster $a$ and fog $b$ ($km$). 
 
-\item$D(d_{ab})$. The function $D(x)$ is the network usage descriptor. The network usage function $D(x)$ is an abstraction of the network usage between each user and fog facilities, which could represent the network latency experienced by users or the traffic sent to the cloud. This function is transparent to the optimization algorithm. %COMMENT: I am not sure this is clear...
+\item$D(d_{ab})$. The function $D(x)$ is the network usage descriptor. The network usage function $D(x)$ is a representation of the network usage between each user and fog facilities, which could represent the network latency experienced by users or the traffic sent to the cloud. This function is transparent to the optimization algorithm. %COMMENT: I am not sure this is clear...
 
 In real life planning, latency is arguably the most important performance metric. A small increase in the latency can cause substantial service level degradation \cite{7833029,6678113}. Therefore, in our experiment, the network usage function $D(x)$ is modelled as the point to point delay. 
 
@@ -709,17 +709,22 @@ Minimize Delay
 \begin{align}\label{obj2}
 \textit{Minimize} \bigg[\sum_{i=1}^m\sum_{j\in J} D(d_{ij}) x_{ij}\bigg]
 \end{align}
+
+%COMMENT: What is this for? is this part of the objective function? is this a constraint? It also has no equation number...
+% This is the network usage function we mentioned before. In our experiment, it represents the network delay. As we can see connecting to cloud or fog gives different delay. Since it just a detailed explain of the D(x) function, I avoid giving "equation number" on this function.
+\iffalse
 $$
-D(d_{ab})  = %COMMENT: What is this for? is this part of the objective function? is this a constraint? It also has no equation number...
+D(d_{ab})  = 
 	\begin{cases}
 	\begin{aligned}
-	&\psi^{ToFog} + \mu^{ToFog} + \gamma^{ToFog}&\sum_{i \in I  \setminus m}x_{ij} =1\\
+	&\psi^{ToFog} + \mu^{ToFog} + \gamma^{ToFog}&\sum_{i \in I  \setminus m}x_{ij} =1&\quad\\
 	 &\textbf{ (connect to the fog)}\\
-	&\psi^{ToCloud} + \mu^{ToCloud} + \gamma^{ToCloud}&x_{mj} = 1\\
+	&\psi^{ToCloud} + \mu^{ToCloud} + \gamma^{ToCloud}&x_{mj} = 1&\quad\\
 	& \textbf{ (connect to the cloud)}\\
 	\end{aligned}
 	\end{cases}
 $$
+\fi
 As shown above, to achieve the maximum network performance and cost efficiency, the model simultaneously minimizes the total network delay and the total capital expenditure required to deploy the fog network.  
 
 Both Equation \Eq{obj1} and Equation \Eq{obj2} are subject to following constraints:
@@ -844,6 +849,7 @@ The pseudocode of the NSGA-II algorithm is presented in Fig~\ref{nsga2}. %COMMEN
 \end{minipage}% 
 }
 \caption{NSGA-II Algorithm}
+\label{nsga2}
 \end{figure}
 
 
@@ -894,6 +900,7 @@ $r_1$ and $r_2 $ add randomness between the global and local searching direction
 \end{minipage}% 
 }
 \caption{SMPSO Algorithm}
+\label{SMPSO}
 \end{figure}
 
 
@@ -973,7 +980,8 @@ In the last 50\% of the interations, the population is expected to be evenly div
 \label{PSONSGA}
 \end{minipage}
 }
-\caption{PSONSGA Algorithm}
+\caption{PSONSGA Algorithm (Proposed)}
+\label{PSONSGA}
 \end{figure}
 
 
@@ -1136,7 +1144,7 @@ One fundamental difference between single and multiple objective optimization is
          % second figure itself
        % \captionsetup{font={scriptsize,}}
         \subfloat[Solution frontier of PSONSGA] 
-        {\includegraphics[trim=0 0 0 0,clip,width=0.5\linewidth]{psonsga_frontier.pdf}\label{psonsgafro}}
+        {\includegraphics[trim=0 0 0 0,clip,width=0.5\linewidth]{psonsga_frontier2.pdf}\label{psonsgafro}}
 \caption{Solution frontier comparison}
 \end{figure*}
 
@@ -1439,22 +1447,38 @@ In future, our model can be further extended to a dynamic expansion model in whi
 %\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
 % or if you just want to reserve a space for a photo:
 
-\begin{IEEEbiography}{Michael Shell}
-Biography text here.
-\end{IEEEbiography}
+
 
 % if you will not have a photo at all:
-\begin{IEEEbiographynophoto}{John Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
+\begin{IEEEbiography}
+[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Decheng}}]{Decheng Zhang}
+received his Bachelor of Engineering degree from the Department of Information and Communication Engineering, Beijing University of Posts and Telecommunications, China, in 2013. He received his Master of Applied Science degree from the Department of Systems and Computer Engineering at the Carleton University, Canada, in 2018. His research interests include fog/edge computing, fog network planning, optimization research and cloud computing.
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Faisal}}]{Faisal Haider}
+received his Bachelor of Science degree in Electrical and Electronics Engineering from American International University-Bangladesh in 2013. He received his Master of Applied Science degree from the Department of Systems and Computer Engineering from Carleton University, Canada, in 2018. His research interests include fog/edge computing, network planning and design, network optimization and cloud computing.
+\end{IEEEbiography}
+
+
+
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{ProfMarc}}]{Marc St-Hilaire}
+joined Carleton University in 2006 upon completion of his PhD in Computer Engineering, from \'Ecole Polytechnique of Montr\'eal. He is currently an associate professor with the School of Information Technology with a cross appointment with the Department of Systems and Computer Engineering at Carleton University. Dr. St-Hilaire is conducting research on various aspects of wireline and wireless communication systems. More precisely, he is interested in network planning and infrastructure, network protocols, network interconnection, and performance analysis. With more than 110 publications, his work has been published in several journals and international conferences. Finally, Dr. St-Hilaire is actively involved in the research community. In addition to serving as a member of technical program committees of various conferences, he is equally involved in the organization of several national and international conferences and workshops. He is also a senior member of the IEEE.
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{DrMakaya}}]{Christian Makaya}
+is currently a researcher at IBM T.J. Watson Research Center, NY, USA. Prior to joining IBM, he was a senior research scientist at Telcordia Technologies, NJ, USA and a visiting researcher at Ericsson Research, Montreal, Canada. His work has been a catalyst behind several new initiatives and technologies resulting in delivery of high-value capabilities to products and services. For his technical contributions, he has been recognized by several high-prestige internal awards by IBM. Dr. Makaya leads several technical research activities in the areas of distributed systems and analytics with the mission of delivering deep technical breakthroughs. The focus of his current research interests is on distributed AI and ML, edge computing, Internet of Things (IoT), network functions virtualization (NFV), policy-based management systems, and cyber-security. Dr. Makaya has authored numerous technical papers in peer-reviewed journals and conferences, and filled several patents. He received his Ph.D. in Computer Engineering from Polytechnique Montreal (2007). Dr. Makaya is an active member and volunteer of IEEE and serves on the Industry Outreach Board of IEEE Communication Society (ComSoc). He served as the co-chair of IEEE Young Professionals for the IEEE Princeton/Central Jersey Section.
+\end{IEEEbiography}
+
 
 % insert where needed to balance the two columns on the last page with
 % biographies
 %\newpage
 
-\begin{IEEEbiographynophoto}{Jane Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
+
 
 % You can push biographies down or up by placing
 % a \vfill before or after them. The appropriate
