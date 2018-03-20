@@ -571,8 +571,8 @@ Unfortunately, a recent comprehensive survey in the state-of-the-art fog researc
 
 Essentially, the fog planning problem is composed of two sub-problems, each of them has been proven to be NP-hard:
 \begin{itemize}
-\item Modular facility location problem %COMMENT: Can you add a reference showing that this problem is NP-hard
-\item Resource allocation problem %COMMENT: Can you add a reference showing that this problem is NP-hard
+\item Modular facility location problem \cite{megiddo1983maximum,1.43} %COMMENT: Can you add a reference showing that this problem is NP-hard
+\item Resource allocation problem \cite{trove.nla.gov.au/work/12815220}%COMMENT: Can you add a reference showing that this problem is NP-hard
 \end{itemize}
 In addition, from the operator point of view, the objectives of the fog planning can be targeted to two conflicting objectives:
 \begin{itemize}
@@ -666,17 +666,17 @@ The following notation is defined based upon the information mentioned above.
 \item $d_{ab} = Distance (\textit{a}, \textit{b})$. The euclidean distance between points \textit{a} and \textit{b}. The values of points \textit{a} and \textit{b} are the \textit{x}, \textit{y} coordinates.
 \item $\gamma$, processing delay. Each router or switch in the data path adds a finite amount of delay as the packet is received, processed, and then forwarded. This includes the time taken at each layer of the Transmission Control Protocol/Internet Protocol (TCP/IP) down to the bit level layer. The processing delay depends on the hop count between user's connection to fog or cloud. The processing delay is calculated as: 
 \begin{align}
-\text{Processing Delay} (\gamma) = r \cdot h %COMMENT: in the description above, you say that gamma is the processing delay but in the equation here, gamme is a parameter to the processing delay function...please try to make this consistent...the same applies to the other delay equations below...
+\text{Processing Delay} : \gamma = r \cdot h %COMMENT: in the description above, you say that gamma is the processing delay but in the equation here, gamme is a parameter to the processing delay function...please try to make this consistent...the same applies to the other delay equations below...
 \end{align}
 where $r$ is the mean processing delay for each hop (switch or router) and $h$ represents the hop count.
 \item $\psi$, transmission delay. The time taken for a process to send the information to the transmission medium (fiber or wire). The transmission delay depends on the link speed that is used and the packet size that is to be sent. The transmission delay is calculated as: 
 \begin{align}
-\text{Transmission Delay} (\psi) =\sigma / \kappa
+\text{Transmission Delay} : \psi =\sigma / \kappa
 \end{align}
 where $\sigma$ is the packet size (bytes) and $\kappa$ represents the link speed (bytes/sec).
 \item  $\mu$, propagation delay. It equals to the time taken for the signal to propagete from the source to the destination. The propagation delay depends on the medium used. For copper wires, the speed can be approximated to 0.59 speed of light. In this paper, we use 0.59 speed of light for the speed of copper wire. The propagation delay is calculated as:  
 \begin{align}
-\text{Propagation Delay} (\mu) = \frac{d_{ab}}{(0.59 \cdot Light\ Speed)}
+\text{Propagation Delay} : \mu = \frac{d_{ab}}{(0.59 \cdot Light\ Speed)}
 \end{align}
 where $d_{ab}$ is the euclidean distance between edge-cluster $a$ and fog $b$ ($km$). 
 
@@ -698,10 +698,12 @@ In real life planning, latency is arguably the most important performance metric
 Based on the notation presented in the previous section, we can now formulate the Fog Planning Problem, denoted FPP, as follows:
 
 Minimize Cost
-\begin{align}\label{obj1}
+\begin{equation}\label{obj1}
+\begin{aligned}
 \textit{Minimize}\bigg[\sum_{i=1}^{m}\sum_{k\in K} y_{ik}c^{Rent}_i +\sum_{i=1}^{m}\sum_{k\in K}  y_{ik} c^{Fog}_k +\\
 \sum_{i=1}^m \sum_{l\in L} z_{il} c^{Link}_l d_{i,cloud}\bigg] %COMMENT: When you look at the output, this equation has 2 equation numbers...can you fix?
-\end{align}
+\end{aligned}
+\end{equation}
 
 Minimize Delay 
 \begin{align}\label{obj2}
@@ -762,7 +764,7 @@ Finally, Constraints \Eq{st5}, \Eq{st6} and \Eq{st7} define the decision variabl
 
 \section{NP-Hardness}\label{nphard}
 This section establishes the NP-hardness of the FPP.
-The FPP has two objective functions that need to be minimized: building cost and network delay. The decision variables consist of the placement and assignment decisions. %COMMENT: Try to be consistent: Sometimes, you refer to building cost, sometimes to capital expenditure...it is better if you stick to 1 term....
+The FPP has two objective functions that need to be minimized: capital expenditure and network delay. The decision variables consist of the placement and assignment decisions. %COMMENT: Try to be consistent: Sometimes, you refer to building cost, sometimes to capital expenditure...it is better if you stick to 1 term....
 
 Essentially, this problem is a multi-objective combinatorial problem. If we relax certain conditions, there are related single-objective optimization problems that we can gain insight from.
 Suppose that we know that a certain number of fog facilities will be opened and that we relax the capacity constraints at each location. Then, the problem of assigning edge-clusters to open facilities while minimizing the total delay can be reduced to the K-median clustering problem.
@@ -772,9 +774,9 @@ Suppose that we know that a certain number of fog facilities will be opened and 
 The NP-hardness of the K-median clustering problem was proved in 1984 by Megiddo and Supowit~\cite{1984}. 
 However, even if we can solve this problem using an approximation algorithm, we still have to decide a reasonable $k$ regarding to the total budget. 
 
-From another perspective, suppose we combine the building cost and network delay into a single objective function. The objective function becomes:
+From another perspective, suppose we combine the capital expenditure and network delay into a single objective function. The objective function becomes:
 \begin{align}
-\textit{Minimize}: \ \alpha\cdot\overset{opened\ fog}{\sum} \textit{fog building cost} + \\
+\textit{Minimize}: \ \alpha\cdot\overset{opened\ fog}{\sum} \textit{fog capital expenditure} + \\
 \beta \cdot \overset{all\ users}{\sum}\textit{network delay}\nonumber
 \end{align}
 where $\alpha$ and $\beta$ are the normalizing constants.
@@ -804,18 +806,18 @@ The weighted sum approach combines multiple objective functions into a single ob
 &\sum_{j=1}^Q \lambda_j = 1
 \end{align}
 
-where $\lambda_j$ is the weight parameter assigned to each objective to capture the relative importance on a given objective. Assigning a higher (lower) weight places more (less) emphasis on this objective.
+where $\lambda_j$ is the weight parameter assigned to each objective to capture the relative importance on a given objective. Assigning a higher (lower) weight places more (less) emphasis on this objective. In our FPP experiment, 11 pairs of weights (with steps of 0.1) is applied to solve each problem instance.
 
 \subsection{Approximate Algorithms for FPP}\label{sec:approximate}
-In this paper, the Evolutionary Multi-objective Optimization (EMO) is applied to solve the fog planning problem. EMO is based on heuristic multi-objective optimization techniques that imitate the principles of natural selection and survival of the fittest to find near-optimal solutions [23]. In EMO, multiple Pareto-optimal solutions are found in a single simulation by emphasizing multiple non-dominated and isolated solutions [23]. %COMMENT: Fix the reference [23] - [23] appears at 2 places...
-The experiment results show that neither NSGAII nor SMPSO is capable to produce solid results with strict convergence and rich coverage. Therefore, we propose an algorithm (PSONSGA) to overcome the drawbacks of these algorithms. The experiments in next section show that our algorithm outperforms NSGAII and SMPSO in coverage and convergence respectively.
+In this paper, the Evolutionary Multi-objective Optimization (EMO) is applied to solve the fog planning problem. EMO is based on heuristic multi-objective optimization techniques that imitate the principles of natural selection and survival of the fittest to find near-optimal solutions. In EMO, multiple Pareto-optimal solutions are found in a single simulation by emphasizing multiple non-dominated and isolated solutions \cite{Deb:2001:MOU:559152}. %COMMENT: Fix the reference [23] - [23] appears at 2 places...
+The experiment results show that neither NSGA-II nor SMPSO is capable to produce solid results with strict convergence and rich coverage. Therefore, we propose an algorithm (PSONSGA) to overcome the drawbacks of these algorithms. The experiments in next section show that our algorithm outperforms NSGA-II and SMPSO in coverage and convergence respectively.
 %Comment: Be consistent in how you write NSGA-II vs NSGAII... see above and below...but check the whole document...
 \subsubsection{Non-dominated Sorting Genetic Algorithm II}
 NSGA-II follows the same steps as the classical GA. The classical GA first initializes a population of \textit{N} individuals, then it generates offsprings by applying the crossover and mutation operations, and finally evaluates and selects the fittest solutions as output solutions. What differentiates NSGA-II from previous algorithms (such as VEGA and HLGA) is an intuitive invention of the fast elitist ranking procedure (Non-dominated Sorting). Using this fast ranking procedure, NSGA-II always preserves the best (higher rank in non-dominated rank and larger crowding distance) solutions inside the latest population. 
 The pseudocode of the NSGA-II algorithm is presented in Fig~\ref{nsga2}. %COMMENT: Always use the tilda before referencing figures, tables or references...it will create a constant spacing
 
 \begin{figure}[ht]
-\caption{NSGA-II Algorithm}
+
 \indent\fbox{%
 \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
 \quad
@@ -841,6 +843,7 @@ The pseudocode of the NSGA-II algorithm is presented in Fig~\ref{nsga2}. %COMMEN
 \label{nsga2}
 \end{minipage}% 
 }
+\caption{NSGA-II Algorithm}
 \end{figure}
 
 
@@ -848,7 +851,7 @@ The pseudocode of the NSGA-II algorithm is presented in Fig~\ref{nsga2}. %COMMEN
 \subsubsection{Speed-Constrained Multi-Objective Particle Swarm Optimization}
 Particle Swarm Optimization (proposed by J. Kennedy and R. Eberhart in~\cite{poli2017}) models the social behaviour of biological creatures through the mathematical approach.
 
-The pseudocode of the SMPSO algorithm is presented in Algorithm~\ref{SMPSO}. %COMMENT: Do you call them algorithm or figure??  if you call them figure, make sure the caption appears below the figure and not on top as it is currently the case...
+The pseudocode of the SMPSO algorithm is presented in Fig~\ref{SMPSO}. %COMMENT: Do you call them algorithm or figure??  if you call them figure, make sure the caption appears below the figure and not on top as it is currently the case...
 Similar to the classical PSO algorithm, SMPSO first randomly generates a set of \textit{N} initial solutions, then iteratively updates the ``solution positions" in the searching space~\cite{smpso}.
 In each iteration, every particle adjusts its velocity to follow the local and global best solutions. We assume that each particle $i$ is randomly assigned a position $\vec{x}_i\ (i=1, 2, ..., N)$ and a velocity $\vec{v}_i\ (i=1,2,...,N)$. The algorithm updates the particle's position by:
 \begin{equation}\label{psoposition}
@@ -866,7 +869,7 @@ $r_1$ and $r_2 $ add randomness between the global and local searching direction
 
 
 \begin{figure}[ht]
-\caption{SMPSO Algorithm}
+
 \indent\fbox{%
 \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
 \quad
@@ -890,6 +893,7 @@ $r_1$ and $r_2 $ add randomness between the global and local searching direction
 \label{SMPSO}
 \end{minipage}% 
 }
+\caption{SMPSO Algorithm}
 \end{figure}
 
 
@@ -915,16 +919,16 @@ On the other hand, SMPSO shows different characteristics. The preliminary experi
 \label{smpsolabel}
 \end{figure}
 
-Motivated by the disadvantages in NSGA-II and SMPSO algorithms, we propose a new version of NSGA-II. The algorithm developed is named Particle Swarm Optimized Non-dominated Sorting Genetic Algorithm (PSONSGA). PSONSGA is designed specifically to exploit the searching efficiency of PSO-based algorithms. PSONSGA is a variation of NSGA-II based on the idea of employing particle swarm optimization before proceeding to the NSGA-II's procedure. Following a similar two-phase methodology as the one proposed in~\cite{magnier2008multiobjective,onut2008two,sabri2000multi}, PSONSGA, presented in Algorithm~\ref{PSONSGA}, consists two phases: the PSO procedure and the NSGA-II procedure. %COMMENT: again, do you call them algorithm of figure?
+Motivated by the disadvantages in NSGA-II and SMPSO algorithms, we propose a new version of NSGA-II. The algorithm developed is named Particle Swarm Optimized Non-dominated Sorting Genetic Algorithm (PSONSGA). PSONSGA is designed specifically to exploit the searching efficiency of PSO-based algorithms. PSONSGA is a variation of NSGA-II based on the idea of employing particle swarm optimization before proceeding to the NSGA-II's procedure. Following a similar two-phase methodology as the one proposed in~\cite{magnier2008multiobjective,onut2008two,sabri2000multi}, PSONSGA, presented in Fig~\ref{PSONSGA}, consists two phases: the PSO procedure and the NSGA-II procedure. %COMMENT: again, do you call them algorithm of figure?
 %COMMENT: in your figures (Fig 8d for example), you refer to PSONGAII instead of PSONGA...can you select a consistent name? 
+
 \noindent\textbf{PSO procedure:}
-The purpose of the PSO procedure is to explore the decision space and preserve the diversity in the solution population. In the first 50\% of the PSONSGA iterations, the PSO procedure is employed to explore the decision space, and to test different search directions (see rows 3-12). The position and velocity updating mechanism in PSO, speeds up this searching process. The diversity in population is preserved before proceeding to the next phases. %COMMENT: I am not sure the row numbers are correct....please adjust
+The purpose of the PSO procedure is to explore the decision space and preserve the diversity in the solution population. In the first 50\% of the PSONSGA iterations, the PSO procedure is employed to explore the decision space, and to test different search directions (see rows 5-14). The position and velocity updating mechanism in PSO, speeds up this searching process. The diversity in population is preserved before proceeding to the next phases. %COMMENT: I am not sure the row numbers are correct....please adjust
 
 \noindent\textbf{NSGA-II procedure:}
-In the last 50\% of the interations, the population is expected to be evenly diversified and relatively close to the Pareto front. The main goal in this phase is not to explore the searching space but to increase the closeness to the optimal solutions (see rows 17-27)~\cite{concordia}. The NSGA-II procedure, including non-dominated sorting, is executed to concentrate the solutions towards the true optimal front. Also, we employ an aggressive selection process as proposed in~\cite{concordia} (see row 24) to enforce the convergence of solutions and the extension of the solution front.. %COMMENT: I am not sure the row numbers are correct....
+In the last 50\% of the interations, the population is expected to be evenly diversified and relatively close to the Pareto front. The main goal in this phase is not to explore the searching space but to increase the closeness to the optimal solutions (see rows 19-33)~\cite{concordia}. The NSGA-II procedure, including non-dominated sorting, is executed to concentrate the solutions towards the true optimal front. Also, we employ an aggressive selection process as proposed in~\cite{concordia} (see row 28) to enforce the convergence of solutions and the extension of the solution front.. %COMMENT: I am not sure the row numbers are correct....
 
 \begin{figure}[ht]
-\caption{PSONSGA Algorithm}
 \indent\fbox{
 \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
 \quad
@@ -969,6 +973,7 @@ In the last 50\% of the interations, the population is expected to be evenly div
 \label{PSONSGA}
 \end{minipage}
 }
+\caption{PSONSGA Algorithm}
 \end{figure}
 
 
@@ -1069,7 +1074,7 @@ For each potential location, four different pre-defined types of fog nodes can b
 In this section, a detailed example is presented to explain the FPP planning results. The first instance of FPP3010 is solved with the weighted sum method, NSGA-II, SMPSO and PSONSGA algorithms. The FPP3010 assumes that one needs to plan and design a brand new fog network to accommodate 30 edge-clusters. To achieve this, we need to find the optimal number, location and capacity of fog nodes. \Fig{nettopology} shows the initial planning area with 30 edge-clusters and 10 potential locations that are uniformly distributed in a $100km \times 100km$ area. 
 Each edge-cluster has resource demands which need to be accommodated. 
 
-\begin{figure}[ht] %COMMENT: Typically, we always use 't' or 'b' because we want figures and tables to either be on top or at the bottom of the page...
+\begin{figure}[t] %COMMENT: Typically, we always use 't' or 'b' because we want figures and tables to either be on top or at the bottom of the page...
 \centerline{\includegraphics[trim=0 50 0 50,clip,width=3.8in]{100x100problem.png}}
 \caption{Edge-cluster locations and potential locations of fog for FPP3010 (instance-1)} 
 \label{nettopology}
@@ -1237,7 +1242,7 @@ To better understand the results, we select the solution number 23 from Table~\r
 
 \subsection{Result Analysis}\label{resultanalyssi}
 In this section, we present the experiment results to assess the performance of the algorithms.
-Four instances of 26 different problem sizes are solved by the weighted sum, NSGA-II, SMPSO and PSONSGA algorithms. %COMMENT: This line seems repetitive as you already mentioned this previously...remove?
+%Four instances of 26 different problem sizes are solved by the weighted sum, NSGA-II, SMPSO and PSONSGA algorithms. %COMMENT: This line seems repetitive as you already mentioned this previously...remove?
 A population size of 100 with a number of iterations of 10,000 is used for the three evolutionary algorithms. We use the same parameter settings as the ones described in the last section. %COMMENT: Why these values for the population size and the number of iterations? do they provide best results?
 
 
@@ -1258,7 +1263,7 @@ As shown in \Fig{hvaverage}, the PSONSGA algorithm achieves the best balance bet
 
 
 \subsubsection{IGD Indicator Comparison}
-In this section, we examine the solution quality of the weighted sum, NSGA-II, SMPSO and PSONSGA algorithms by using the IGD quality indicator. The IGD indicator evaluates the quality of a solution set using a reference set. It generates the IGD value through calculating the average euclidean distance between the solution sets and the reference sets. %COMMENT: add a reference for IGD since this is the first you talk about it...
+In this section, we examine the solution quality of the weighted sum, NSGA-II, SMPSO and PSONSGA algorithms by using the IGD quality indicator. The IGD indicator evaluates the quality of a solution set using a reference set. It generates the IGD value through calculating the average euclidean distance between the solution sets and the reference sets \cite{gaspar2015evolutionary}. %COMMENT: add a reference for IGD since this is the first you talk about it...
 
 In our evaluation, we use the best non-dominated solutions returned by all three methods as the reference set. The IGD values for the four algorithms are presented in Table~\ref{table:igd}. The first column shows the problem number. Columns~2,~3,~4 and~5 display respectively, the average IGD value for the weighted sum, NSGA-II, SMPSO and PSONSGA. As can be seen, PSONSGA displays its superiority over the weighted sum method and the two existing evolutionary algorithms in this evaluation. The average IGD values for PSONSGA's solutions achieve the best IGD in 25 of the 26 problems. This improvement over NSGA-II and SMPSO can be explained by the information exchange between the PSO and GA phases in the PSONSGA procedure. This two-phase procedure has been proven to reach better Pareto front results as shown by the IGD indicator comparison.
 
@@ -1350,10 +1355,12 @@ Among all the work describe above that are directly related to the distributed-c
 
 %COMMENT: You should mention one more time that a recent survey paper confirms that work on the planning of fog netowrks is important but still lacking...this is good for us...
 
-\section{Conclusion}\label{conclu}
-In this paper, we first proposed a multi-objective modular facility location model for planning fog networks. The multi-objective combinatorial model enables us to fully explore the searching domain with different fog location selection, fog type selection and user allocation combinations. The model produces the Pareto front solution set over two objectives: the network delay and the building cost. Decision makers can use this Pareto front to make reliable decision on fog infrastructure building plan. 
+What is noteworthy, is that the recent comprehensive survey \cite{mouradian2017comprehensive} in fog research has confirmed that work on the planning and design of fog system deployment is vital but still lacking detailed research so far.
 
-We also propose to apply an exact algorithm (weighted sum) and heuristic algorithms (NSGAII, SMPSO and PSONSGA) to solve the model. The results from the weighted sum, NSGA-II, SMPSO and PSONSGA are compared in terms of the HV indicator, IGD indicator and delay gaps. The experimental results confirm that evolutionary algorithms can be notably efficient in execution time compared to the weighted sum-based approach. From the HV and IGD indicator perspectives, PSONSGA achieves the best HV and IGD values for most of the problem sizes. In contrast, NSGA-II was able to return good solutions in terms of the delay objective value without considering the diversity and coverage of solution frontiers.
+\section{Conclusion}\label{conclu}
+In this paper, we first proposed a multi-objective modular facility location model for planning fog networks. The multi-objective combinatorial model enables us to fully explore the searching domain with different fog location selection, fog type selection and user allocation combinations. The model produces the Pareto front solution set over two objectives: the network delay and the capital expenditure. Decision makers can use this Pareto front to make reliable decision on fog infrastructure building plan. 
+
+We also propose to apply an exact algorithm (weighted sum) and heuristic algorithms (NSGA-II, SMPSO and PSONSGA) to solve the model. The results from the weighted sum, NSGA-II, SMPSO and PSONSGA are compared in terms of the HV indicator, IGD indicator and delay gaps. The experimental results confirm that evolutionary algorithms can be notably efficient in execution time compared to the weighted sum-based approach. From the HV and IGD indicator perspectives, PSONSGA achieves the best HV and IGD values for most of the problem sizes. In contrast, NSGA-II was able to return good solutions in terms of the delay objective value without considering the diversity and coverage of solution frontiers.
 
 In the real world of fog planning, the number of edge-clusters can be extremely large, and the network topology, conditions and restrictions will be more complicated. Therefore, using the weighed sum method and CPLEX can be time-consuming. In fact, the proposed algorithm can be more appropriate in this situation. PSONSGA is recommended for solving the fog planning problem as it achieves the best balance between the solution diversity, convergence and computation time.
 

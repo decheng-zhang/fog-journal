@@ -49,6 +49,22 @@ C.~Mouradian, D.~Naboulsi, S.~Yangui, R.~H. Glitho, M.~J. Morrow, and P.~A.
   Polakos, ``A comprehensive survey on fog computing: State-of-the-art and
   research challenges,'' \emph{IEEE Communications Surveys \& Tutorials}, 2017.
 
+\bibitem{megiddo1983maximum}
+N.~Megiddo, E.~Zemel, and S.~L. Hakimi, ``The maximum coverage location
+  problem,'' \emph{SIAM Journal on Algebraic Discrete Methods}, vol.~4, no.~2,
+  pp. 253--261, 1983.
+
+\bibitem{1.43}
+S.~Guha and S.~Khuller, ``\BIBforeignlanguage{English}{Greedy strikes back:
+  Improved facility location algorithms},''
+  \emph{\BIBforeignlanguage{English}{Journal of Algorithms}}, vol.~31, no.~1,
+  pp. 228--248, 1999.
+
+\bibitem{trove.nla.gov.au/work/12815220}
+T.~Ibaraki and N.~Katoh, \emph{\BIBforeignlanguage{English}{Resource allocation
+  problems : algorithmic approaches}}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Cambridge, Mass. : MIT Press, 1988.
+
 \bibitem{7833029}
 C.~Feng, H.~Xu, and B.~Li, ``An alternating direction method approach to cloud
   traffic management,'' \emph{IEEE Transactions on Parallel and Distributed
@@ -80,6 +96,11 @@ R.~J. Fowler, M.~S. Paterson, and S.~L. Tanimoto, ``Optimal packing and
 \bibitem{bonn}
 J.~Vygen, ``Approximation algorithms for facility location problem,'' Research
   Institute for Discrete Mathematic, University of Bonn, Tech. Rep., 2004.
+
+\bibitem{Deb:2001:MOU:559152}
+K.~Deb and D.~Kalyanmoy, \emph{Multi-Objective Optimization Using Evolutionary
+  Algorithms}, ser. Wiley Interscience Series in S.\hskip 1em plus 0.5em minus
+  0.4em\relax New York, NY, USA: John Wiley; Sons, Inc., 2001.
 
 \bibitem{poli2017}
 \BIBentryALTinterwordspacing
@@ -137,6 +158,16 @@ A.~Auger, J.~Bader, D.~Brockhoff, and E.~Zitzler, ``Theory of the hypervolume
   Algorithms}, ser. FOGA '09.\hskip 1em plus 0.5em minus 0.4em\relax New York,
   NY, USA: ACM, 2009, pp. 87--102. [Online]. Available:
   \url{http://doi.acm.org/10.1145/1527125.1527138}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gaspar2015evolutionary}
+\BIBentryALTinterwordspacing
+A.~Gaspar-Cunha, C.~Antunes, and C.~Coello, \emph{Evolutionary Multi-Criterion
+  Optimization: 8th International Conference, EMO 2015, Guimar{\~a}es,
+  Portugal, March 29 --April 1, 2015. Proceedings}, ser. Lecture Notes in
+  Computer Science.\hskip 1em plus 0.5em minus 0.4em\relax Springer
+  International Publishing, 2015, no. pt. 2. [Online]. Available:
+  \url{https://books.google.ca/books?id=rtF9BwAAQBAJ}
 \BIBentrySTDinterwordspacing
 
 \bibitem{fcsmartcity}
