@@ -49,22 +49,6 @@ C.~Mouradian, D.~Naboulsi, S.~Yangui, R.~H. Glitho, M.~J. Morrow, and P.~A.
   Polakos, ``A comprehensive survey on fog computing: State-of-the-art and
   research challenges,'' \emph{IEEE Communications Surveys \& Tutorials}, 2017.
 
-\bibitem{megiddo1983maximum}
-N.~Megiddo, E.~Zemel, and S.~L. Hakimi, ``The maximum coverage location
-  problem,'' \emph{SIAM Journal on Algebraic Discrete Methods}, vol.~4, no.~2,
-  pp. 253--261, 1983.
-
-\bibitem{1.43}
-S.~Guha and S.~Khuller, ``\BIBforeignlanguage{English}{Greedy strikes back:
-  Improved facility location algorithms},''
-  \emph{\BIBforeignlanguage{English}{Journal of Algorithms}}, vol.~31, no.~1,
-  pp. 228--248, 1999.
-
-\bibitem{trove.nla.gov.au/work/12815220}
-T.~Ibaraki and N.~Katoh, \emph{\BIBforeignlanguage{English}{Resource allocation
-  problems : algorithmic approaches}}.\hskip 1em plus 0.5em minus 0.4em\relax
-  Cambridge, Mass. : MIT Press, 1988.
-
 \bibitem{7833029}
 C.~Feng, H.~Xu, and B.~Li, ``An alternating direction method approach to cloud
   traffic management,'' \emph{IEEE Transactions on Parallel and Distributed
@@ -74,10 +58,6 @@ C.~Feng, H.~Xu, and B.~Li, ``An alternating direction method approach to cloud
 A.~Ghosh, S.~Ha, E.~Crabbe, and J.~Rexford, ``Scalable multi-class traffic
   management in data center backbone networks,'' \emph{IEEE Journal on Selected
   Areas in Communications}, vol.~31, no.~12, pp. 2673--2684, December 2013.
-
-\bibitem{Vazirani:2001:AA:500776}
-V.~V. Vazirani, \emph{Approximation Algorithms}.\hskip 1em plus 0.5em minus
-  0.4em\relax New York, NY, USA: Springer-Verlag New York, Inc., 2001.
 
 \bibitem{1984}
 N.~Megiddo and K.~J. Supowit, ``\BIBforeignlanguage{English}{On the complexity
@@ -93,10 +73,6 @@ R.~J. Fowler, M.~S. Paterson, and S.~L. Tanimoto, ``Optimal packing and
   \url{http://www.sciencedirect.com/science/article/pii/0020019081901113}
 \BIBentrySTDinterwordspacing
 
-\bibitem{bonn}
-J.~Vygen, ``Approximation algorithms for facility location problem,'' Research
-  Institute for Discrete Mathematic, University of Bonn, Tech. Rep., 2004.
-
 \bibitem{Deb:2001:MOU:559152}
 K.~Deb and D.~Kalyanmoy, \emph{Multi-Objective Optimization Using Evolutionary
   Algorithms}, ser. Wiley Interscience Series in S.\hskip 1em plus 0.5em minus
@@ -110,7 +86,7 @@ R.~Poli, J.~Kennedy, and T.~Blackwell, ``Particle swarm optimization,''
 \BIBentrySTDinterwordspacing
 
 \bibitem{smpso}
-A.~Nebro, J.~Durillo, J.~Garc???a-Nieto, C.~Coello~Coello, F.~Luna, and
+A.~Nebro, J.~Durillo, J.~Garc a-Nieto, C.~Coello~Coello, F.~Luna, and
   E.~Alba, ``Smpso: A new pso-based metaheuristic for multi-objective
   optimization,'' in \emph{2009 IEEE Symposium on Computational Intelligence in
   Multi-Criteria Decision-Making, MCDM 2009 - Proceedings}, May. 2009, pp. 66
@@ -203,6 +179,26 @@ C.~Dsouza, G.-J. Ahn, and M.~Taguinod, ``Policy-driven security management for
 R.~Deng, R.~Lu, C.~Lai, T.~Hao~Luan, and H.~Liang, ``Optimal workload
   allocation in fog-cloud computing towards balanced delay and power
   consumption,'' \emph{IEEE Internet of Things Journal}, pp. 1--1, 01 2016.
+
+\bibitem{hong2016dynamic}
+H.-J. Hong, P.-H. Tsai, and C.-H. Hsu, ``Dynamic module deployment in a fog
+  computing platform,'' in \emph{Network Operations and Management Symposium
+  (APNOMS), 2016 18th Asia-Pacific}.\hskip 1em plus 0.5em minus 0.4em\relax
+  IEEE, 2016, pp. 1--6.
+
+\bibitem{bachmann2017design}
+K.~Bachmann, ``Design and implementation of a fog computing framework,'' Ph.D.
+  dissertation, Master's thesis, Vienna University of Technology (TU Wien),
+  Vienna, Austria, 2017.
+
+\bibitem{haider2017planning}
+F.~Haider, ``On the planning and design problem of fog networks,'' Ph.D.
+  dissertation, Carleton University Ottawa, 2017.
+
+\bibitem{liu2018tensor}
+H.~Liu, L.~T. Yang, M.~Lin, D.~Yin, and Y.~Guo, ``A tensor-based holistic edge
+  computing optimization framework for internet of things,'' \emph{IEEE
+  Network}, vol.~32, no.~1, pp. 88--95, 2018.
 
 \bibitem{hwang2013distributed}
 \BIBentryALTinterwordspacing
