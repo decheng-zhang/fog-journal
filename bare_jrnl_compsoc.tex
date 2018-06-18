@@ -33,7 +33,8 @@
 %% This work is distributed under the LaTeX Project Public License (LPPL)
 %% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
 %% distributed and modified. A copy of the LPPL, version 1.3, is included
-%%64;70;10M<64;70;10M<64;70;10M<64;70;10M<64;70;10M<64;70;10M;59;9MM70;10M;10M<64;70;10M<64;70;10M<64;70;10M<64;70;10M<64;70;10M<64;70;10M<64;70;10M%% in the base LaTeX documentation of all distributions of LaTeX released
+%%
+%% in the base LaTeX documentation of all distributions of LaTeX released
 %% 2003/12/01 or later.
 %% Retain all contribution notices and credits.
 %% ** Modified files should be clearly indicated as such, including  **
@@ -488,7 +489,7 @@
 \begin{abstract}
 %As a promising computing architecture, fog computing has attracted a lot of attention from industry and research communities in recent years. 
 
-With a huge number of heterogeneous and distributed devices performing computational and storage tasks between the cloud and users, fog computing can be an answer to the surging challenges in today's networks. However, due to the decentralized and heterogeneous nature of fog networks, planning a fog network can be a complicated and challenging task. To deal with this problem, we first propose a multi-objective mathematical model that simultaneously deals with the fog node placement, fog node dimensioning and demand routing. The model optimizes the tradeoff front (i.e. Pareto front) between capital expenditure and network delay in dual objective functions. Then, we analyze the performance of an exact algorithm (branch and bound) and two evolutionary algorithms (NSGA-II and SMPSO) on this problem, showing that the evolutionary algorithms offer a good balance between the Pareto optimality and computation time efficiency. Inspired by the existing evolutionary algorithms, we proposed a new evolutionary algorithm, named PSONSGA, which combines the convergence efficiency from NSGA-II and the searching efficiency from SMPSO.  
+With a huge number of heterogeneous and distributed devices performing computational and storage tasks between the cloud and users, fog computing can be an answer to the surging challenges in today's networks. However, due to the decentralized and heterogeneous nature of fog networks, planning a fog network can be a complicated and challenging task. To deal with this problem, we first propose a multi-objective mathematical model that simultaneously deals with the fog node placement, fog node dimensioning and demand routing. The model optimizes the tradeoff front (i.e. Pareto front) between capital expenditure and network delay in dual objective functions. Then, we analyze the performance of an exact algorithm (branch and bound) and two evolutionary algorithms (NSGA-II and SMPSO) on this problem, showing that the evolutionary algorithms offer a good balance between the Pareto optimality and computation time efficiency. Inspired by the existing evolutionary algorithms, we proposed a new evolutionary algorithm, named Particle Swarm Optimized Non-dominated Sorting Genetic Algorithm (PSONSGA), which combines the convergence efficiency from NSGA-II and the searching efficiency from SMPSO.  
 The results demonstrate that the evolutionary algorithms are highly efficient compared to the exact algorithm. Among the three evolutionary algorithms, the algorithm we proposed (PSONSGA) gives the best Pareto front solutions, which shows the good convergence to the true optimal front and the evenly distributing property. The proposed algorithm can be a valuable planning tool for the upcoming deployment of fog networks.
 \end{abstract}
 
@@ -851,7 +852,7 @@ where $\lambda_j$ is the weight parameter assigned to each objective to capture 
 In this paper, the Evolutionary Multi-objective Optimization (EMO) is applied to solve the fog planning problem. EMO is based on heuristic multi-objective optimization techniques that imitate the principles of natural selection and survival of the fittest to find near-optimal solutions. In EMO, multiple Pareto-optimal solutions are found in a single simulation by emphasizing multiple non-dominated and isolated solutions \cite{Deb:2001:MOU:559152}. %COMMENT: Fix the reference [23] - [23] appears at 2 places...
 The experiment results show that neither NSGA-II nor SMPSO is capable to produce solid results with strict convergence and rich coverage. Therefore, we propose an algorithm (PSONSGA) to overcome the drawbacks of these algorithms. The experiments in next section show that our algorithm outperforms NSGA-II and SMPSO in coverage and convergence respectively.
 %Comment: Be consistent in how you write NSGA-II vs NSGAII... see above and below...but check the whole document...
-\subsubsection{Non-dominated Sorting Genetic Algorithm II}
+\subsubsection{Non-dominated Sorting Genetic Algorithm II (NSGA-II)}
 NSGA-II follows the same steps as the classical GA. 
 %The classical GA first initializes a population of \textit{N} individuals, then it generates offsprings by applying the crossover and mutation operations, and finally evaluates and selects the fittest solutions as output solutions. 
 
@@ -891,7 +892,7 @@ What differentiates NSGA-II from previous algorithms (such as VEGA and HLGA) is 
 
 
 
-\subsubsection{Speed-Constrained Multi-Objective Particle Swarm Optimization}
+\subsubsection{Speed-Constrained Multi-Objective Particle Swarm Optimization (SMPSO)}
 Particle Swarm Optimization (proposed by J. Kennedy and R. Eberhart in~\cite{poli2017}) models the social behaviour of biological creatures through the mathematical approach.
 
 %The pseudocode of the SMPSO algorithm is presented in Fig~\ref{SMPSO}. %COMMENT: Do you call them algorithm or figure??  if you call them figure, make sure the caption appears below the figure and not on top as it is currently the case...
@@ -1145,20 +1146,20 @@ Four instances of 26 different problem sizes are generated within a $100 km \tim
 %REVISED
 For each iteration, the NSGA-II algorithm includes three operations, each with different time complexities:
 \begin{enumerate}
-\item  non dominated sorting with $O(M(2N)^2)$
-\item crowding distance assignment with
+\item  Non dominated sorting with $O(M(2N)^2)$
+\item Crowding distance assignment with
 $O(M(2N)log(2N))$
 
-\item sorting and polling with ~$O(2N log(2N))$
+\item Sorting and polling with ~$O(2N log(2N))$
 \end{enumerate}
 Here, $M$ refers to the number of objective functions, $N$ refers to the population size.
 The $K$ represents the total number of iteration. The overall complexity is $(KMN^2)$ 
 
 Similarly, for each iteration, the SMPSO algorithm includes three operations:
 \begin{enumerate}
-\item  particle speed computation $O(N)$
-\item  apply polynomial mutation $O(\tau\% N)$
-\item polling for elite set ~$O(MN^2)$
+\item  Particle speed computation $O(N)$
+\item  Apply polynomial mutation $O(\tau\% N)$
+\item Polling for elite set ~$O(MN^2)$
 \end{enumerate}
 Where $\tau\%$ is the chance of a sample solution mutating.
 The overall complexity for SMPSO with K iterations is $O(KMN^2)$.
