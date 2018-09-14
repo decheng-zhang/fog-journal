@@ -944,25 +944,10 @@ In each iteration, every particle adjusts its velocity to follow the local and g
 
 
 \subsection{Proposed EMO Algorithm (PSONSGA)}
-Previous studies in NSGA-II and SMPSO mainly focus on applying these algorithms on continuous problems. 
-However, for discrete problems, such as the combinatorial problem we are dealing with, the preliminary results of our experiment reveal that these two heuristic algorithms hold different characteristics.
+Motivated by the disadvantages in NSGA-ii and SMPSO algorithms, we propose a new evolutionary algorithm called particle swarm optimized non-dominated sorting genetic algorithm (PSONSGA). PSONSGA is specifically designed to combine the searching efficiency of two different types of evolutionary algorithm (PSO and GA). More precisely, the PSONSGA algorithm follows a two-phase methodology. In the first phase, the PSO procedure is executed to preprocess the pareto solution set. Then, in the second phase, the NSGA-II procedure is employed to reinforce the characteristic of convergence in the solution set. More details about each phase are presented next.
 
-As shown in~\Fig{nsgalabel}, the NSGA-II performs efficiently regarding the convergence to the Pareto front, however, its solution points are unevenly distributed in the search space. Even if we change the mutation index or the crossover index settings, no obvious improvement can be perceived. The researchers in~\cite{doi:10.1163/156939308784160703}, have observed the same disadvantage in continuous NSGA-II applications. This disadvantage stems from the NSGA-II's sorting process. The concentrated effect in the non-dominated sorting harms the diversity in NSGA-II solutions. 
 
-The researchers in~\cite{doi:10.1163/156939308784160703} proposed an elitism strategy to overcome this shortcoming. However, the time-complexity involved in evaluating the elitism sets is high, and can be a huge issue for large scale problems.
 
-\begin{figure}[ht]
-\centerline{\includegraphics[trim={2cm .5cm 2cm 2cm},clip,width=1.\linewidth]{nsgaitertest_label.pdf}}
-\caption{NSGA-II algorithm struggles to cover the whole Pareto front} 
-\label{nsgalabel}
-\end{figure} 
-\begin{figure}[ht]
-\centerline{\includegraphics[trim={2cm 1cm 2cm 2cm},clip,width=\linewidth]{SMPSO_iterationtest_label.pdf}}
-\caption{SMPSO algorithm struggles to converge to true pareto front} 
-\label{smpsolabel}
-\end{figure}
-
-On the other hand, SMPSO shows different characteristics. The preliminary experiment demonstrates that SMPSO performs efficiently on exploring the whole front. It preserves the diversity in the solutions set and always produces evenly distributed Pareto frontiers. However, after a given number of iterations, SMPSO struggles to push the solution set to converge to the true optimal front. The preliminary results are shown in~\Fig{smpsolabel}.
 
 
 
