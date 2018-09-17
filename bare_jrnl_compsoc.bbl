@@ -44,10 +44,71 @@ S.~Yi, C.~Li, and Q.~Li, ``A survey of fog computing: concepts, applications
 M.~Chiang and T.~Zhang, ``Fog and iot: An overview of research opportunities,''
   \emph{IEEE Internet of Things Journal}, vol.~3, no.~6, pp. 854--864, 2016.
 
+\bibitem{al2017energy}
+A.~Al-Shuwaili and O.~Simeone, ``Energy-efficient resource allocation for
+  mobile edge computing-based augmented reality applications,'' \emph{IEEE
+  Wireless Communications Letters}, vol.~6, no.~3, pp. 398--401, 2017.
+
+\bibitem{taleb2017mobile}
+T.~Taleb, S.~Dutta, A.~Ksentini, M.~Iqbal, and H.~Flinck, ``Mobile edge
+  computing potential in making cities smarter,'' \emph{IEEE Communications
+  Magazine}, vol.~55, no.~3, pp. 38--43, 2017.
+
+\bibitem{chen2016efficient}
+X.~Chen, L.~Jiao, W.~Li, and X.~Fu, ``Efficient multi-user computation
+  offloading for mobile-edge cloud computing,'' \emph{IEEE/ACM Transactions on
+  Networking}, no.~5, pp. 2795--2808, 2016.
+
+\bibitem{hong2013mobile}
+K.~Hong, D.~Lillethun, U.~Ramachandran, B.~Ottenw{\"a}lder, and B.~Koldehofe,
+  ``Mobile fog: A programming model for large-scale applications on the
+  internet of things,'' in \emph{Proceedings of the second ACM SIGCOMM workshop
+  on Mobile cloud computing}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2013,
+  pp. 15--20.
+
+\bibitem{orsini2015computing}
+G.~Orsini, D.~Bade, and W.~Lamersdorf, ``Computing at the mobile edge:
+  Designing elastic android applications for computation offloading,'' in
+  \emph{IFIP Wireless and Mobile Networking Conference (WMNC), 2015 8th}.\hskip
+  1em plus 0.5em minus 0.4em\relax IEEE, 2015, pp. 112--119.
+
+\bibitem{stojmenovic2014fog}
+I.~Stojmenovic, ``Fog computing: A cloud to the ground support for smart things
+  and machine-to-machine networks,'' in \emph{Telecommunication Networks and
+  Applications Conference (ATNAC), 2014 Australasian}.\hskip 1em plus 0.5em
+  minus 0.4em\relax IEEE, 2014, pp. 117--122.
+
+\bibitem{zhu2013improving}
+J.~Zhu, D.~S. Chan, M.~S. Prabhu, P.~Natarajan, H.~Hu, and F.~Bonomi,
+  ``Improving web sites performance using edge servers in fog computing
+  architecture,'' in \emph{2013 IEEE Seventh International Symposium on
+  Service-Oriented System Engineering}.\hskip 1em plus 0.5em minus 0.4em\relax
+  IEEE, 2013, pp. 320--323.
+
 \bibitem{mouradian2017comprehensive}
 C.~Mouradian, D.~Naboulsi, S.~Yangui, R.~H. Glitho, M.~J. Morrow, and P.~A.
   Polakos, ``A comprehensive survey on fog computing: State-of-the-art and
   research challenges,'' \emph{IEEE Communications Surveys \& Tutorials}, 2017.
+
+\bibitem{zhang2010cloud}
+Q.~Zhang, L.~Cheng, and R.~Boutaba, ``Cloud computing: state-of-the-art and
+  research challenges,'' \emph{Journal of internet services and applications},
+  vol.~1, no.~1, pp. 7--18, 2010.
+
+\bibitem{wang2017computation}
+C.~Wang, C.~Liang, F.~R. Yu, Q.~Chen, and L.~Tang, ``Computation offloading and
+  resource allocation in wireless cellular networks with mobile edge
+  computing,'' \emph{IEEE Transactions on Wireless Communications}, vol.~16,
+  no.~8, pp. 4924--4938, 2017.
+
+\bibitem{pahlavan2011principles}
+K.~Pahlavan and P.~Krishnamurthy, \emph{Principles of wireless networks: A
+  unified approach}.\hskip 1em plus 0.5em minus 0.4em\relax Prentice Hall PTR,
+  2011.
+
+\bibitem{cvijetic2013advanced}
+M.~Cvijetic and I.~Djordjevic, \emph{Advanced optical communication systems and
+  networks}.\hskip 1em plus 0.5em minus 0.4em\relax Artech House, 2013.
 
 \bibitem{7833029}
 C.~Feng, H.~Xu, and B.~Li, ``An alternating direction method approach to cloud
@@ -86,45 +147,24 @@ R.~Poli, J.~Kennedy, and T.~Blackwell, ``Particle swarm optimization,''
 \BIBentrySTDinterwordspacing
 
 \bibitem{smpso}
-A.~Nebro, J.~Durillo, J.~Garc a-Nieto, C.~Coello~Coello, F.~Luna, and
+A.~Nebro, J.~Durillo, J.~Garc???a-Nieto, C.~Coello~Coello, F.~Luna, and
   E.~Alba, ``Smpso: A new pso-based metaheuristic for multi-objective
   optimization,'' in \emph{2009 IEEE Symposium on Computational Intelligence in
   Multi-Criteria Decision-Making, MCDM 2009 - Proceedings}, May. 2009, pp. 66
   -- 73.
 
-\bibitem{doi:10.1163/156939308784160703}
-\BIBentryALTinterwordspacing
-J.~OuYang, F.~Yang, S.~W. Yang, and Z.~P. Nie, ``The improved nsga-ii
-  approach,'' \emph{Journal of Electromagnetic Waves and Applications},
-  vol.~22, no. 2-3, pp. 163--172, 2008. [Online]. Available:
-  \url{http://dx.doi.org/10.1163/156939308784160703}
-\BIBentrySTDinterwordspacing
-
-\bibitem{magnier2008multiobjective}
-L.~Magnier, ``Multiobjective optimization of building design using artificial
-  neural network and multiobjective evolutionary algorithms,'' Ph.D.
-  dissertation, Concordia University, 2008.
-
-\bibitem{onut2008two}
-S.~{\"O}n{\"u}t, B.~G{\"u}ls{\"u}n, U.~R. Tuzkaya, G.~Tuzkaya \emph{et~al.},
-  ``A two-phase possibilistic linear programming methodology for
-  multi-objective supplier evaluation and order allocation problems,''
-  \emph{Information Sciences}, vol. 178, no.~2, pp. 485--500, 2008.
-
-\bibitem{sabri2000multi}
-E.~H. Sabri and B.~M. Beamon, ``A multi-objective approach to simultaneous
-  strategic and operational planning in supply chain design,'' \emph{Omega},
-  vol.~28, no.~5, pp. 581--598, 2000.
-
-\bibitem{concordia}
-L.~Magnier and F.~Haghighat, ``Multiobjective optimization of building design
-  using trnsys simulations, genetic algorithm, and artificial neural network,''
-  vol.~45, pp. 739--746, 03 2010.
-
 \bibitem{nygren2010akamai}
 E.~Nygren, R.~K. Sitaraman, and J.~Sun, ``The akamai network: a platform for
   high-performance internet applications,'' \emph{ACM SIGOPS Operating Systems
   Review}, vol.~44, no.~3, pp. 2--19, 2010.
+
+\bibitem{Durillo2011}
+\BIBentryALTinterwordspacing
+J.~J. Durillo and A.~J. Nebro, ``jmetal: A java framework for multi-objective
+  optimization,'' \emph{Advances in Engineering Software}, vol.~42, pp.
+  760--771, 2011. [Online]. Available:
+  \url{http://www.sciencedirect.com/science/article/pii/S0965997811001219}
+\BIBentrySTDinterwordspacing
 
 \bibitem{Auger:2009:THI:1527125.1527138}
 \BIBentryALTinterwordspacing
