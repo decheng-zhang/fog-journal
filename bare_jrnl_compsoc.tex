@@ -596,8 +596,8 @@ Therefore, an integrated framework for computation offloading, hardware resource
 %%%%REVISED
 By convention, the single-objective optimization is employed in network planning. The designing process is essentially an allocation problem which maximizes the network utility function over a fixed capital expenditure constraint. 
 However, in network planning, it is possible to greatly improve the network performance whilst incurring a very small increase in capital expenditure. Such compromise solutions can be easily missed using the single objective method. To obtain such optimal solution, network designers must use a form of trial and error to try different budget options. The inability to derive an analytical perspective of the problem requires the network designer to execute the single-objective optimization multiple times, which significantly increasing the computational overhead. 
-In contrast, the multi-objective optimization, we adopt in this work, is more desirable for the fog network design. First, the multi-objective optimization searches the optimal set of trade-off solutions and simultaneously takes all the objectives into considerations. Hence, it can easily catch the aforementioned tradeoff solution.
-Second, since the multi-objective optimization techniques attempt to find multiple non-dominated and isolated solutions in a single simulation by emphasizing multiple solutions towards Pareto-front, it greatly speeds up the optimizing process. 
+In contrast, the Multi-Objective Optimization (MOO), we adopt in this work, is more desirable for the fog network design. First, the MOO searches the optimal set of trade-off solutions and simultaneously takes all the objectives into considerations. Hence, it can easily catch the aforementioned tradeoff solution.
+Second, since the MOO techniques attempt to find multiple non-dominated and isolated solutions in a single simulation by emphasizing multiple solutions towards Pareto-front, it greatly speeds up the optimizing process. 
 
 %%%%%%%%%%%%%%%%%%
 
@@ -858,12 +858,11 @@ where $\lambda_j$ is the weight parameter assigned to each objective to capture 
 %Assigning a higher (lower) weight places more (less) emphasis on this objective.% In our FPP experiment, 11 pairs of weights (with steps of 0.1) is applied to solve each problem instance.
 
 \subsection{Approximate Algorithms for FPP}\label{sec:approximate}
-In this paper, the Evolutionary Multi-objective Optimization (EMO) is applied to solve the fog planning problem. EMO is based on heuristic multi-objective optimization techniques that imitate the principles of natural selection and survival of the fittest to find near-optimal solutions. In EMO, multiple Pareto-optimal solutions are found in a single simulation by emphasizing multiple non-dominated and isolated solutions \cite{Deb:2001:MOU:559152}. %COMMENT: Fix the reference [23] - [23] appears at 2 places...
+In this paper, the Evolutionary Multi-Objective Optimization (EMO) is applied to solve the fog planning problem. EMO is based on heuristic multi-objective optimization techniques that imitate the principles of natural selection and survival of the fittest to find near-optimal solutions. In EMO, multiple Pareto-optimal solutions are found in a single simulation by emphasizing multiple non-dominated and isolated solutions \cite{Deb:2001:MOU:559152}. %COMMENT: Fix the reference [23] - [23] appears at 2 places...
 The experiment results show that neither NSGA-II nor SMPSO is capable to produce solid results with strict convergence and rich coverage. Therefore, we propose an algorithm (PSONSGA) to overcome the drawbacks of these algorithms. The experiments in next section show that our algorithm outperforms NSGA-II and SMPSO in coverage and convergence respectively.
 %Comment: Be consistent in how you write NSGA-II vs NSGAII... see above and below...but check the whole document...
 \subsubsection{Non-dominated Sorting Genetic Algorithm II (NSGA-II)}
-NSGA-II follows the similar steps as the classical GA. 
-The NSGA-II first initializes a population of \textit{N} individuals, then generates offsprings by applying the crossover and mutation operations, and finally evaluates and selects the fittest solutions as output solutions. What differentiates NSGA-II from previous algorithms (such as VEGA and HLGA) is an intuitive invention of the fast elitist ranking procedure (Non-dominated Sorting). Using this fast ranking procedure, NSGA-II always preserves the best (higher rank in non-dominated rank and larger crowding distance) solutions inside the latest population. 
+NSGA-II is an improved verision of Non-dominated Sorting Genetic Algorithm (NSGA). The NSGA proposed in \cite{Deb:2002:FEM:2221359.2221582} is one of the most effective multi-objective evolutionary algorithms (EAs) \cite{fonseca1993genetic, rey1994niched}. With an emphasis for moving toward the true Pareto-optimal region, NSGA can be expected to find multiple Pareto solutions in a single simulation run. What differentiates NSGA-II from previous version of NSGA is an intuitive invention of the fast elitist ranking procedure. Using this ranking procedure, NSGA-II always preserves the best (higher rank in non-dominated rank and larger crowding distance) solutions inside the latest population. 
 
 The flowchart to solve the FPP using the NSGA-II procedure is illustrated in \Fig{nsgaflowchart}. First, a solution set is initialized and evaluated against the objective function (4) and (5). The solution set is then ranked based on this evaluation results. Second, the promising solutions in higher ranks are selected to execute the crossover and mutation in order to generate the offspring solutions. Third, all the parent solutions and offspring solutions are combined and ranked again, higher ranked solutions are stored and carried into next round of same procedure. The algorithm is repeatedly executed until the terminating condition is satisfied. When the terminating condition is met, the procedure outputs the best Pareto front solutions so far.
 %The pseudocode of the NSGA-II algorithm is presented in Fig~\ref{nsga2}. %COMMENT: Always use the tilda before referencing figures, tables or references...it will create a constant spacing
@@ -907,11 +906,13 @@ The flowchart to solve the FPP using the NSGA-II procedure is illustrated in \Fi
 
 
 \subsubsection{Speed-Constrained Multi-Objective Particle Swarm Optimization (SMPSO)}
-Particle Swarm Optimization (proposed by J. Kennedy and R. Eberhart in~\cite{poli2017}) models the social behaviour of biological creatures through the mathematical approach.
+Particle Swarm Optimization (PSO), proposed by J. Kennedy and R. Eberhart in~\cite{poli2017}, is a meta-heuristic imitating the social behaviour of biological creatures, such as bird flocking and fish schooling \cite{poli2017}. Since the first proposal, it has become a popular approach to deal with the multi-objective problem. In fact, more than thirty different proposals and application cases in multi-objective optimization have been reported in the specialized literature \cite{reyes2006multi}
 
 %The pseudocode of the SMPSO algorithm is presented in Fig~\ref{SMPSO}. %COMMENT: Do you call them algorithm or figure??  if you call them figure, make sure the caption appears below the figure and not on top as it is currently the case...
+Among this proposals, the SMPSO has displayed its superiority in various benchmark test, and overcome the limitations of other state-of-the-art EMO algorithm \cite{kachroudi2010average, atashpendar2016parallel}. Indeed, the benchmark evaluation in \cite{smpso} shows that SMPSO is the most salient EMO technique in terms of the converging speed towards the Pareto front with promising solution quality\cite{smpso}.
+
 SMPSO first randomly generates a set of \textit{N} initial solutions, then iteratively updates the ``solution positions" in the searching space~\cite{smpso}.
-In each iteration, every particle adjusts its velocity to follow the local and global best solutions. 
+In each iteration, every particle adjusts its velocity to follow the local and global best solutions. An intuitive invention in SMPSO, is the velocity constriction procedure. Incorporating this procedure, the particle is effectively moving through the search space \cite{smpso} 
 
 \begin{figure}[ht]
 \centerline{\includegraphics[width=\columnwidth]{psophaseflowchart.png}}
@@ -919,7 +920,7 @@ In each iteration, every particle adjusts its velocity to follow the local and g
 \label{smpsoflow}
 \end{figure}
 
-The steps for solving the FPP using SMPSO procedure is shown in \Fig{smpsoflow}. Initially, a set of ``particle'' is randomly generated, and each particle is assigned a position and a velocity in the solution space. Then, all the particle are evaluated against the objective functions. The non-dominated particle will be collected and form a ``elite-particle-set''. In the next step, the algorithm updates the particle's position by
+The steps for solving the FPP using SMPSO procedure is shown in \Fig{smpsoflow}. Initially, a set of ``particle'' (The candidate solutions) is randomly generated, and each particle is assigned a position and a velocity in the solution space. Then, all the particle are evaluated against the objective functions. The non-dominated particle will be collected and form an ``elite-particle-set''. In the next step, the algorithm updates the particle's position by
 %We assume that each particle $i$ is randomly assigned a position $\vec{x}_i\ (i=1, 2, ..., N)$ and a velocity $\vec{v}_i\ (i=1,2,...,N)$. The algorithm updates the particle's position by:
 \begin{equation}\label{psoposition}
 	\vec{x}_i(t) = \vec{x}_i(t-1) + \vec{v}_i(t)
@@ -931,7 +932,7 @@ And the velocity for each particle $\vec{v}_i(t)$ is given by:
 where $\vec{x}_i(t)$ and $\vec{v}_i(t)$ are the location and velocity of particle \textit{i} at time \textit{t}. 
 The $\vec{x}_{p_i}$ and $\vec{x}_{g_i}$ are the historical best and the global best points.
 $w$, $C_1$, $C_2$, $r_1$ and $r_2 $ are respectively, the inertia weight, the learning factors and the randomness parameters for each local and global particle.
-The elite-set is updated with non-dominated feasible solutions in ``elite-set''. This step is repeated until the terminating condition is satisfied. When the terminating condition is satisfied, the algorithm reports the best Pareto solution set so far.
+The elite-set is updated with non-dominated feasible solutions from each round. This step of particle updating is repeated until the terminating condition is satisfied. When the terminating condition is satisfied, the algorithm reports the best Pareto solution found so far.
 %\begin{figure}[ht]
 %
 %\indent\fbox{%
@@ -963,7 +964,7 @@ The elite-set is updated with non-dominated feasible solutions in ``elite-set''.
 
 
 \subsection{Proposed EMO Algorithm (PSONSGA)}
-Motivated by the disadvantages in NSGA-ii and SMPSO algorithms, we propose a new evolutionary algorithm called particle swarm optimized non-dominated sorting genetic algorithm (PSONSGA). PSONSGA is specifically designed to combine the searching efficiency of two different types of evolutionary algorithm (PSO and GA). More precisely, the PSONSGA algorithm follows a two-phase methodology. In the first phase, the PSO procedure is executed to preprocess the pareto solution set. Then, in the second phase, the NSGA-II procedure is employed to reinforce the characteristic of convergence in the solution set. More details about each phase are presented next.
+Motivated by the disadvantages in NSGA-II and SMPSO algorithms, we propose a new evolutionary algorithm called particle swarm optimized non-dominated sorting genetic algorithm (PSONSGA). PSONSGA is specifically designed to combine the searching efficiency of two different types of evolutionary algorithm (PSO and GA). More precisely, the PSONSGA algorithm follows a two-phase methodology. In the first phase, the PSO procedure is executed to preprocess the pareto solution set. Then, in the second phase, the NSGA-II procedure is employed to reinforce the characteristic of convergence in the solution set. More details about each phase are presented next.
 
 
 \noindent\textbf{PSO phase:}
@@ -1376,10 +1377,11 @@ In this section, we present the expriment results to assess the performance of t
 A population size of 100 with a number of iterations of 10,000 is used for the three evolutionary algorithms. We use the same parameter settings as the ones described in the last section. %COMMENT: Why these values for the population size and the number of iterations? do they provide best results?
 
 
-\subsubsection{HV Indicator Comparison}
-Since the output of each MO algorithm is a non-dominated solution set, we employ the HV indicator~\cite{Auger:2009:THI:1527125.1527138} to evaluate and compare the solution quality between the weighted sum algorithm and the three evolutionary algorithms. 
+\subsubsection{HyperVolume(HV) Indicator Comparison}
+The HyperVolume (HV) indicator \cite{Auger:2009:THI:1527125.1527138} is a measure used in EMO to evaluate the searching performance. HV calculates the volume enclosed by a Pareto front approximation and a reference set. Since it overcomes the complexity arising with density-based EMO \cite{wagner2007pareto} and guarantees strict monotonicity in Pareto dominance \cite{fleischer2003measure}, it has been a popular choice for EMO algorithm evaluation \cite{knowles2003properties,emmerich2005emo}. 
+The HV indicator examines both the convergence and diversity properties of a solution set~\cite{Auger:2009:THI:1527125.1527138}. In this work, we use HV indicator to examine the solution quality between the weighted sum algorithm and the three evolutionary algorithms. 
 
-The HV indicator examines both the convergence and diversity properties of a solution set. In these perspectives, PSONSGA algorithm displays its superiority in finding a good quality solution within reasonable computation time. In fact, for all four problem instances (a total of 104 different problems), PSONSGA provides the best HV value for 95 problems (91.3\%). The NSGA-II and SMPSO each provides the highest HV value for 19 different problems (18.2\%). The weighted sum approach only provides the best HV value for 2 problems (1.92\%).
+In these perspectives, PSONSGA algorithm displays its superiority in finding a good quality solution within reasonable computation time. In fact, for all four problem instances (a total of 104 different problems), PSONSGA provides the best HV value for 95 problems (91.3\%). The NSGA-II and SMPSO each provides the highest HV value for 19 different problems (18.2\%). The weighted sum approach only provides the best HV value for 2 problems (1.92\%).
 
 \Fig{hvaverage} provides a complete comparison of the HV values amongst the weighted sum, NSGA-II, SMPSO and PSONSGA algorithms over the four instance sets with a 95\% confidence interval.
 %%%REVISED
@@ -1392,8 +1394,11 @@ The HV indicator examines both the convergence and diversity properties of a sol
 As shown in \Fig{hvaverage}, the PSONSGA algorithm achieves the best balance between convergence and diversity amongst the three evolutionary algorithms. The weighted sum approach produces worse HV values, because each individual branch and bound search can only produce one single solution. We can also notice that for large-scale problems, NSGA-II's HV values are worse than all three other algorithms. This is due to the larger search space in large-scale problems and the concentrated effect of the non-dominated sorting in the NSGA-II algorithm.
 
 
-\subsubsection{IGD Indicator Comparison}
-In this section, we examine the solution quality of the weighted sum, NSGA-II, SMPSO and PSONSGA algorithms by using the IGD quality indicator. The IGD indicator evaluates the quality of a solution set using a reference set. It generates the IGD value through calculating the average euclidean distance between the solution sets and the reference sets \cite{gaspar2015evolutionary}. %COMMENT: add a reference for IGD since this is the first you talk about it...
+\subsubsection{Inverted Generational Distance (IGD) Indicator Comparison}
+
+Another widely used performance indicator is the Inverted Generational Distance (IGD) \cite{sun2018igd}. The IGD uses a reference set to evaluates the quality of a solution set. In a nutshell, The IGD amounts to the average euclidean distance between the solution sets and the reference sets \cite{gaspar2015evolutionary}.
+
+In this section, we examine the solution quality of the weighted sum, NSGA-II, SMPSO and PSONSGA algorithms utilizing the IGD quality indicator.
 
 In our evaluation, we use the best non-dominated solutions returned by all three methods as the reference set. The IGD values for the four algorithms are presented in Table~\ref{table:igd}. The first column shows the problem number. Columns~2,~3,~4 and~5 display respectively, the average IGD value for the weighted sum, NSGA-II, SMPSO and PSONSGA. As can be seen, PSONSGA shows better results over the weighted sum method and the two existing evolutionary algorithms in this evaluation. The average IGD values for PSONSGA's solutions achieve the best IGD in 25 of the 26 problems. This improvement over NSGA-II and SMPSO can be explained by the information exchange between the PSO and GA phases in the PSONSGA procedure. This two-phase procedure has been proven to reach better Pareto front results as shown by the IGD indicator comparison.
 

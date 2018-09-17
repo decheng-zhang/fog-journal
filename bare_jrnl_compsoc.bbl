@@ -139,12 +139,49 @@ K.~Deb and D.~Kalyanmoy, \emph{Multi-Objective Optimization Using Evolutionary
   Algorithms}, ser. Wiley Interscience Series in S.\hskip 1em plus 0.5em minus
   0.4em\relax New York, NY, USA: John Wiley; Sons, Inc., 2001.
 
+\bibitem{Deb:2002:FEM:2221359.2221582}
+\BIBentryALTinterwordspacing
+K.~Deb, A.~Pratap, S.~Agarwal, and T.~Meyarivan, ``A fast and elitist
+  multiobjective genetic algorithm: Nsga-ii,'' \emph{Trans. Evol. Comp},
+  vol.~6, no.~2, pp. 182--197, Apr. 2002. [Online]. Available:
+  \url{http://dx.doi.org/10.1109/4235.996017}
+\BIBentrySTDinterwordspacing
+
+\bibitem{fonseca1993genetic}
+C.~M. Fonseca, P.~J. Fleming \emph{et~al.}, ``Genetic algorithms for
+  multiobjective optimization: Formulationdiscussion and generalization.'' in
+  \emph{Icga}, vol.~93, no. July, 1993, pp. 416--423.
+
+\bibitem{rey1994niched}
+J.~rey Horn, N.~Nafpliotis, and D.~E. Goldberg, ``A niched pareto genetic
+  algorithm for multiobjective optimization,'' in \emph{Proceedings of the
+  first IEEE conference on evolutionary computation, IEEE world congress on
+  computational intelligence}, vol.~1.\hskip 1em plus 0.5em minus 0.4em\relax
+  Citeseer, 1994, pp. 82--87.
+
 \bibitem{poli2017}
 \BIBentryALTinterwordspacing
 R.~Poli, J.~Kennedy, and T.~Blackwell, ``Particle swarm optimization,''
   \emph{Swarm Intelligence}, vol.~1, no.~1, pp. 33--57, Jun. 2007. [Online].
   Available: \url{https://doi.org/10.1007/s11721-007-0002-0}
 \BIBentrySTDinterwordspacing
+
+\bibitem{reyes2006multi}
+M.~Reyes-Sierra, C.~C. Coello \emph{et~al.}, ``Multi-objective particle swarm
+  optimizers: A survey of the state-of-the-art,'' \emph{International journal
+  of computational intelligence research}, vol.~2, no.~3, pp. 287--308, 2006.
+
+\bibitem{kachroudi2010average}
+S.~Kachroudi and M.~Grossard, ``Average rank domination relation for nsgaii and
+  smpso algorithms for many-objective optimization,'' in \emph{Nature and
+  Biologically Inspired Computing (NaBIC), 2010 Second World Congress
+  on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2010, pp. 19--24.
+
+\bibitem{atashpendar2016parallel}
+A.~Atashpendar, B.~Dorronsoro, G.~Danoy, and P.~Bouvry, ``A parallel
+  cooperative coevolutionary smpso algorithm for multi-objective
+  optimization,'' in \emph{IEEE International Conference on High Performance
+  Computing Simulation (HPCS)}, 2016, pp. 713--720.
 
 \bibitem{smpso}
 A.~Nebro, J.~Durillo, J.~Garc???a-Nieto, C.~Coello~Coello, F.~Luna, and
@@ -175,6 +212,35 @@ A.~Auger, J.~Bader, D.~Brockhoff, and E.~Zitzler, ``Theory of the hypervolume
   NY, USA: ACM, 2009, pp. 87--102. [Online]. Available:
   \url{http://doi.acm.org/10.1145/1527125.1527138}
 \BIBentrySTDinterwordspacing
+
+\bibitem{wagner2007pareto}
+T.~Wagner, N.~Beume, and B.~Naujoks, ``Pareto-, aggregation-, and
+  indicator-based methods in many-objective optimization,'' in
+  \emph{International conference on evolutionary multi-criterion
+  optimization}.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2007, pp.
+  742--756.
+
+\bibitem{fleischer2003measure}
+M.~Fleischer, ``The measure of pareto optima applications to multi-objective
+  metaheuristics,'' in \emph{International Conference on Evolutionary
+  Multi-Criterion Optimization}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Springer, 2003, pp. 519--533.
+
+\bibitem{knowles2003properties}
+J.~Knowles and D.~Corne, ``Properties of an adaptive archiving algorithm for
+  storing nondominated vectors,'' \emph{IEEE Transactions on Evolutionary
+  Computation}, vol.~7, no.~2, pp. 100--116, 2003.
+
+\bibitem{emmerich2005emo}
+M.~Emmerich, N.~Beume, and B.~Naujoks, ``An emo algorithm using the hypervolume
+  measure as selection criterion,'' in \emph{International Conference on
+  Evolutionary Multi-Criterion Optimization}.\hskip 1em plus 0.5em minus
+  0.4em\relax Springer, 2005, pp. 62--76.
+
+\bibitem{sun2018igd}
+Y.~Sun, G.~G. Yen, and Z.~Yi, ``Igd indicator-based evolutionary algorithm for
+  many-objective optimization problems,'' \emph{IEEE Transactions on
+  Evolutionary Computation}, 2018.
 
 \bibitem{gaspar2015evolutionary}
 \BIBentryALTinterwordspacing
