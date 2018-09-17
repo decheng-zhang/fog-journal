@@ -808,34 +808,36 @@ Finally, Constraints \Eq{st5}, \Eq{st6} and \Eq{st7} define the decision variabl
 %%REVISED shorten the NP-hard analysis
 \section{NP-Hardness}\label{nphard}
 This section establishes the NP-hardness of the FPP.
-The FPP has two objective functions that need to be minimized: capital expenditure and network delay. The decision variables consist of the placement and assignment decisions. %COMMENT: Try to be consistent: Sometimes, you refer to building cost, sometimes to capital expenditure...it is better if you stick to 1 term....
+The FPP has two objective functions: capital expenditure and network delay. The decision variables consist of the fog node placement decisions and offloading decisions. %COMMENT: Try to be consistent: Sometimes, you refer to building cost, sometimes to capital expenditure...it is better if you stick to 1 term....
 
-Essentially, this problem is a multi-objective combinatorial problem.
-Two related problems in single objective optimization are K-median clustering problem and Capacitated Facility Location Problem (CFLP)
-%If we relax certain conditions, there are related single-objective optimization problems that we can gain insight from.
-%Suppose that we know that a certain number of fog facilities will be opened and that we relax the capacity constraints at each location. Then, the problem of assigning edge-clusters to open facilities while minimizing the total delay can be reduced to the K-median clustering problem.
+Essentially, this problem is a multi-objective combinatorial problem. The problem is extremely difficult even after relaxing certain conditions. For instance, we can assume that the number of open fog nodes is predetermine and the capacity constraints are relaxed at each location. The problem of this form can be perceived as the K-median clustering problem.
+The K-median clustering problem is NP-hard. The NP-hardness of this problem can be refered to the research in 1984 by Megiddo and Supowit~\cite{1984}.
+
+%Two related problems in single objective optimization are K-median clustering problem and Capacitated Facility Location Problem (CFLP)
+%
+%
 
 %\textbf{K-median clustering problem}: Suppose there exists a bipartite graph with a bi-partition (F, C), where F is a set of facilities and C is a set of clients, and let $k$ be a positive integer specifying the number of facilities allowed to be opened. Let $c_{ij}$ be the cost of connecting client $j$ to facility $i$. The objectives are to find a subset $I \subseteq F, |I| \leq k$ of facilities that should be opened and a function $\phi: C \to I$ assigning clients to open facilities that minimize the total connecting costs \cite{Vazirani:2001:AA:500776}.
 
-The NP-hardness of the K-median clustering problem has been proved in 1984 by Megiddo and Supowit~\cite{1984}. 
-However, even if we can solve this problem using an approximation algorithm, we still have to decide a reasonable $k$ regarding to the total budget. 
+ 
+%However, even if we can solve this problem using an approximation algorithm, we still have to decide a reasonable $k$ regarding to the total budget. 
 
-%From another perspective, suppose we combine the capital expenditure and network delay into a single objective function. The objective function becomes:
-%\begin{align}
-%\textit{Minimize}: \ \alpha\cdot\overset{opened\ fog}{\sum} \textit{fog capital expenditure} + \\
-%\beta \cdot \overset{all\ users}{\sum}\textit{network delay}\nonumber
-%\end{align}
-%where $\alpha$ and $\beta$ are the normalizing constants.
-%Problems of this form are referred to as the capacitated facility location problem.\\
+From another perspective, suppose the capital expenditure and network delay can be combined to a single utility function. The objective function becomes:
+\begin{align}
+\textit{Minimize}: \ \alpha\cdot\overset{FNs}{\sum} \textit{fog capital expenditure} + \\
+\beta \cdot \overset{Users}{\sum}\textit{network delay}\nonumber
+\end{align}
+where $\alpha$ and $\beta$ are normalizing constants.
+Problems of this form are referred to as the capacitated facility location problem. It has been proved that exact solution of CFLP is NP-hard\cite{1984}. In fact, Fowler el al.~\cite{FOWLER1981133} have proved that even an approximation of CFLP is NP-hard.\\
 
 %\textbf{Capacitated Facility Location Problem (CFLP)}: Suppose there exists a bipartite graph with a bi-partition (F, C), where F is a set of facilities and C is a set of clients. A fixed cost $f_i \geq 0 $ for opening each facility $i \in F$; a capacity $u_i \geq 0 $ for each facility $i \in F$; a demand $d_j \geq 0$ for each client $j \in C$. The problem is to find a subset $I \subseteq F$, of facilities to opened as well as a assignment function $\phi: C \to I $ that assigns clients to open facilities. The objective is to minimize the total connecting cost without violating each facility's capacity constraint: $\sum_{j \in C} x_{ij} d_j \leq u_i,  \forall i \in F$~\cite{Vazirani:2001:AA:500776}. 
 
-Megiddo and Supowit~\cite{1984} proved that exact solution of CFLP is NP-hard. Fowler el al.~\cite{FOWLER1981133} proved that when the error is small, even an approximation to this problem is NP-hard.
+
 
 %Specifically, our problem needs to add a single source constraint. The reason is each users can only go to one single fog; in this regard, the problem becomes the Single-Source Capacitated Facility Location Problem (SSCFLP). In SSCFLP, deciding whether a feasible solution exists at all is NP-complete~\cite{bonn}.
 %Moreover, our problem has a modular facility cost model, which provides several capacity levels of the fog facility. This transfers the model to a single-source modular capacitated facility location problem, which is a more complicated version of CFLP~\cite{bonn}.
 
-As mentioned above, the single objective models of this problem are NP-hard and computationally complex. In fact, without an efficient approach, the multi-objective model, which combines the optimization of these two objectives in one single optimization process, can be even challenging.
+As mentioned above, the single objective models of this problem are NP-hard and computationally complex. Without an efficient approach, the multi-objective model, which combines the optimization of these two objectives in one single optimization process, can be even challenging.
 
 \section{Algorithms for FPP}\label{alfpp}
 
@@ -860,15 +862,15 @@ In this paper, the Evolutionary Multi-objective Optimization (EMO) is applied to
 The experiment results show that neither NSGA-II nor SMPSO is capable to produce solid results with strict convergence and rich coverage. Therefore, we propose an algorithm (PSONSGA) to overcome the drawbacks of these algorithms. The experiments in next section show that our algorithm outperforms NSGA-II and SMPSO in coverage and convergence respectively.
 %Comment: Be consistent in how you write NSGA-II vs NSGAII... see above and below...but check the whole document...
 \subsubsection{Non-dominated Sorting Genetic Algorithm II (NSGA-II)}
-NSGA-II follows the same steps as the classical GA. 
-The NSGA-II first initializes a population of \textit{N} individuals, then generates offsprings by applying the crossover and mutation operations, and finally evaluates and selects the fittest solutions as output solutions. 
+NSGA-II follows the similar steps as the classical GA. 
+The NSGA-II first initializes a population of \textit{N} individuals, then generates offsprings by applying the crossover and mutation operations, and finally evaluates and selects the fittest solutions as output solutions. What differentiates NSGA-II from previous algorithms (such as VEGA and HLGA) is an intuitive invention of the fast elitist ranking procedure (Non-dominated Sorting). Using this fast ranking procedure, NSGA-II always preserves the best (higher rank in non-dominated rank and larger crowding distance) solutions inside the latest population. 
 
-What differentiates NSGA-II from previous algorithms (such as VEGA and HLGA) is an intuitive invention of the fast elitist ranking procedure (Non-dominated Sorting). Using this fast ranking procedure, NSGA-II always preserves the best (higher rank in non-dominated rank and larger crowding distance) solutions inside the latest population. 
+The flowchart to solve the FPP using the NSGA-II procedure is illustrated in \Fig{nsgaflowchart}. First, a solution set is initialized and evaluated against the objective function (4) and (5). The solution set is then ranked based on this evaluation results. Second, the promising solutions in higher ranks are selected to execute the crossover and mutation in order to generate the offspring solutions. Third, all the parent solutions and offspring solutions are combined and ranked again, higher ranked solutions are stored and carried into next round of same procedure. The algorithm is repeatedly executed until the terminating condition is satisfied. When the terminating condition is met, the procedure outputs the best Pareto front solutions so far.
 %The pseudocode of the NSGA-II algorithm is presented in Fig~\ref{nsga2}. %COMMENT: Always use the tilda before referencing figures, tables or references...it will create a constant spacing
 \begin{figure}[ht]
 \centerline{\includegraphics[width=\columnwidth]{nsgaphaseflowchart.png}}
-\caption{Typical fog network architecture} 
-\label{foggg}
+\caption{Steps of the NSGA-II Procedure} 
+\label{nsgaflowchart}
 \end{figure}
 
 %\begin{figure}[ht]
@@ -913,24 +915,23 @@ In each iteration, every particle adjusts its velocity to follow the local and g
 
 \begin{figure}[ht]
 \centerline{\includegraphics[width=\columnwidth]{psophaseflowchart.png}}
-\caption{Typical fog network architecture} 
-\label{foggg}
+\caption{Steps of the SMPSO procedure} 
+\label{smpsoflow}
 \end{figure}
+
+The steps for solving the FPP using SMPSO procedure is shown in \Fig{smpsoflow}. Initially, a set of ``particle'' is randomly generated, and each particle is assigned a position and a velocity in the solution space. Then, all the particle are evaluated against the objective functions. The non-dominated particle will be collected and form a ``elite-particle-set''. In the next step, the algorithm updates the particle's position by
 %We assume that each particle $i$ is randomly assigned a position $\vec{x}_i\ (i=1, 2, ..., N)$ and a velocity $\vec{v}_i\ (i=1,2,...,N)$. The algorithm updates the particle's position by:
-%\begin{equation}\label{psoposition}
-%\vec{x}_i(t) = \vec{x}_i(t-1) + \vec{v}_i(t)
-%\end{equation}
-%The velocity function $\vec{v}_i(t)$ is given by:
-%\begin{equation}\label{psospeed}
-%\vec{v}_i(t) = w \cdot \vec{v}_i(t-1) + C_1 \cdot r_1 \cdot (\vec{x}_{p_i}- \vec{x}_i)+ C_2 \cdot r_2 \cdot (\vec{x}_{g_i} - \vec{x}_i)
-%\end{equation}
-%where $\vec{x}_i(t)$ and $\vec{v}_i(t)$ are the location and velocity of particle \textit{i} at time \textit{t}. 
-%The $\vec{x}_{p_i}$ and $\vec{x}_{g_i}$ are respectively, the historical best and the global best points.
-%$w$ is the inertia weight of the particle, which controls the trade-off between the global and local experience.
-%$C_1$ and $C_2$ are learning factors which control the effect of the local and global best particle.
-%$r_1$ and $r_2 $ add randomness between the global and local searching direction.
-
-
+\begin{equation}\label{psoposition}
+	\vec{x}_i(t) = \vec{x}_i(t-1) + \vec{v}_i(t)
+\end{equation}
+And the velocity for each particle $\vec{v}_i(t)$ is given by:
+\begin{equation}\label{psospeed}
+\vec{v}_i(t) = w \cdot \vec{v}_i(t-1) + C_1 \cdot r_1 \cdot (\vec{x}_{p_i}- \vec{x}_i)+ C_2 \cdot r_2 \cdot (\vec{x}_{g_i} - \vec{x}_i)
+\end{equation}
+where $\vec{x}_i(t)$ and $\vec{v}_i(t)$ are the location and velocity of particle \textit{i} at time \textit{t}. 
+The $\vec{x}_{p_i}$ and $\vec{x}_{g_i}$ are the historical best and the global best points.
+$w$, $C_1$, $C_2$, $r_1$ and $r_2 $ are respectively, the inertia weight, the learning factors and the randomness parameters for each local and global particle.
+The elite-set is updated with non-dominated feasible solutions in ``elite-set''. This step is repeated until the terminating condition is satisfied. When the terminating condition is satisfied, the algorithm reports the best Pareto solution set so far.
 %\begin{figure}[ht]
 %
 %\indent\fbox{%
@@ -966,15 +967,15 @@ Motivated by the disadvantages in NSGA-ii and SMPSO algorithms, we propose a new
 
 
 \noindent\textbf{PSO phase:}
-The PSO procedure is employed to explore the decision space, and to test different search directions (see rows 4-13). The position and velocity updating mechanism in PSO speeds up this searching process. The diversity of the population is preserved before proceeding to the next phases. The workflow of the PSO phase is illustrated in Figure X. As can be seen…describe the figure or at least the important points…
+The PSO procedure is employed to explore the decision space, and to test different search directions (see rows 4-13). The particle updating mechanism in PSO speeds up this searching process. The diversity of the population is preserved before proceeding to the next phase. The workflow of the PSO phase is illustrated in \Fig{smpsoflow}. For more details about the PSO procedure, please refer to Section 4.2.2. 
 
 \noindent\textbf{NSGA-II phase:}
-In the second stage of the algorithm, the population is expected to be evenly diversified and relatively close to the Pareto front. The main goal of this phase is not to explore the searching space but to increase the closeness to the optimal solutions (see rows 16-29) [17]. The NSGA-II procedure, including non-dominated sorting, is executed in order to concentrate the solutions towards the true optimal front. The workflow of the NSGA-II phase is illustrated in Figure Y. As can be seen, you need to describe the main parts of the figure…
+In the second stage of the algorithm, the population is expected to be evenly diversified and close to the Pareto front. The purpose of this phase is not to explore the searching space but to enforce the solutions towards the optimal (see rows 16-29) [17]. The non-dominated sorting in NSGA-II facilitates the concentration of the solutions. The workflow of the NSGA-II phase is illustrated in \Fig{nsgaflowchart}. For more details about the NSGA-II procedure, please refer to Section 4.2.1. 
 
-In NSGA-II phase, an aggressive selection process as proposed in [17] (see row 26)is employed to enforce feasibility in the solution set. 
+In NSGA-II phase, the aggressive selection process [17] (see row 26) is executed to enforce the feasibility in the solution set. 
 
 \noindent\textbf{Aggressive selection process: }
-An offspring is included in the population only if it is non-dominated or if it improves one objective’s minimum/maximum value . The aggressive selection process enforces the fitness pressure upon the population. Since the diversity is preserved in the PSO-procedure, a harsh fitness process will not hurt the solution’s spread character. 
+An offspring is included in the population only if it is non-dominated or if it improves one objective’s minimum/maximum value. The aggressive selection process enforces the fitness pressure upon the population. Since the diversity is preserved in the PSO-procedure, a harsh fitness process will not hurt the solution’s spread character. 
 
 
 
