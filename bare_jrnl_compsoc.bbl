@@ -44,6 +44,11 @@ S.~Yi, C.~Li, and Q.~Li, ``A survey of fog computing: concepts, applications
 M.~Chiang and T.~Zhang, ``Fog and iot: An overview of research opportunities,''
   \emph{IEEE Internet of Things Journal}, vol.~3, no.~6, pp. 854--864, 2016.
 
+\bibitem{aazam2016fog}
+M.~Aazam and E.-N. Huh, ``Fog computing: The cloud-iot$\backslash$/ioe
+  middleware paradigm,'' \emph{IEEE Potentials}, vol.~35, no.~3, pp. 40--44,
+  2016.
+
 \bibitem{al2017energy}
 A.~Al-Shuwaili and O.~Simeone, ``Energy-efficient resource allocation for
   mobile edge computing-based augmented reality applications,'' \emph{IEEE
